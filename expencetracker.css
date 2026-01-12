@@ -8,16 +8,21 @@
   margin: 0 auto;
 }
 
-.container {
-}
-
 .aside {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
   border-radius: 16px;
   margin: 20px;
-  display: flex;
+  height: 850px;
   padding: 40px 20px;
   width: 50%;
   background-color: #f9f1f5;
+}
+
+.user-info {
+  display: flex;
+  flex-direction: column;
 }
 
 img {
@@ -29,12 +34,14 @@ img {
 
 .name {
   display: flex;
+  margin: 0 auto;
   color: darkblue;
   font-size: x-large;
   font-weight: bold;
 }
 
 span {
+  margin: 5px auto;
   color: gray;
   font-weight: 100;
   font-size: small;
