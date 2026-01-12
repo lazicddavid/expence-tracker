@@ -21,10 +21,10 @@
 }
 
 img {
-  width: 55px;
-  height: auto;
+  width: 70px;
+  height: 70px;
   border-radius: 50%;
-  border: 1px solid gainsboro;
+  border: 2px solid slateblue;
 }
 
 .name {
@@ -32,4 +32,10 @@ img {
   color: darkblue;
   font-size: x-large;
   font-weight: bold;
+}
+
+span {
+  color: gray;
+  font-weight: 100;
+  font-size: small;
 }
