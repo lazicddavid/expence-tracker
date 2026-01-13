@@ -15,7 +15,8 @@ body {
   border-radius: 16px;
   margin: 20px;
   height: 850px;
-  padding: 40px 20px;
+  padding-left: 40px;
+  padding-top: 20px;
   width: 50%;
   background-color: #fbe0f7;
 }
@@ -41,25 +42,26 @@ img {
 }
 
 .name {
-  margin: 0 auto;
   color: darkblue;
   font-size: x-large;
   font-weight: bold;
 }
 
 span {
-  margin: 5px auto;
+  line-height: 1.5;
   color: gray;
   font-weight: 100;
   font-size: small;
 }
 
+.user,
 .category {
-  display: flex;
-  flex-direction: column;
+  padding-left: 0;
 }
 
 .category ul li {
+  margin: 0;
+  cursor: pointer;
   list-style: none;
   line-height: 2;
   color: slategrey;
