@@ -88,3 +88,11 @@ span {
 .category ul li.active::before {
   height: 60%;
 }
+
+.menu-item {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 0;
+}
