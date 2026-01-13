@@ -45,3 +45,12 @@ span {
   font-weight: 100;
   font-size: small;
 }
+
+.category {
+  display: flex;
+  flex-direction: column;
+}
+
+.category ul li {
+  list-style: none;
+}
