@@ -3,9 +3,8 @@
   font-family: sans-serif;
 }
 
-.body {
-  background-color: #fbf5f7;
-  margin: 0 auto;
+body {
+  background-color: #c5c5c5;
 }
 
 .aside {
@@ -17,12 +16,13 @@
   height: 850px;
   padding: 40px 20px;
   width: 50%;
-  background-color: #f9f1f5;
+  background-color: #fbe0f7;
 }
 
 .user-info {
   display: flex;
   flex-direction: column;
+  margin-top: 10px;
 }
 
 img {
@@ -33,7 +33,6 @@ img {
 }
 
 .name {
-  display: flex;
   margin: 0 auto;
   color: darkblue;
   font-size: x-large;
