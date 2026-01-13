@@ -60,6 +60,7 @@ span {
 
 .category ul li {
   margin: 0;
+  font-size: large;
   cursor: pointer;
   list-style: none;
   line-height: 2;
