@@ -9,19 +9,17 @@ body {
 
 .aside {
   display: flex;
-  align-items: flex-start;
   flex-direction: column;
-  gap: 20px;
   border-radius: 16px;
   margin: 20px;
   height: 850px;
-  padding-left: 40px;
-  padding-top: 20px;
-  width: 50%;
+  width: 400px;
   background-color: #fbe0f7;
 }
 
 .user {
+  padding: 20px;
+  align-items: center;
   display: flex;
   align-items: center;
   gap: 16px;
@@ -48,15 +46,15 @@ img {
 }
 
 span {
+  margin: 5px 0;
   line-height: 1.5;
   color: gray;
   font-weight: 100;
   font-size: small;
 }
 
-.user,
-.category {
-  padding-left: 0;
+.category-list {
+  padding: 0;
 }
 
 .category ul li {
@@ -67,5 +65,26 @@ span {
   color: slategrey;
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 16px;
+  position: relative;
+}
+.category ul li::before {
+  content: "";
+  position: absolute;
+  left: -10px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 4px;
+  height: 0;
+  background-color: rgb(0, 0, 93);
+  border-radius: 4px;
+}
+
+.category ul li.active {
+  color: rgb(0, 0, 93);
+  font-weight: 600;
+}
+
+.category ul li.active::before {
+  height: 60%;
 }
