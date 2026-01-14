@@ -4,6 +4,9 @@
 }
 
 body {
+  display: grid;
+  grid-column: 400px 1fr;
+  gap: 30px;
   background-color: #c5c5c5;
 }
 
@@ -110,4 +113,11 @@ span {
 
 .menu-item:hover {
   color: red;
+}
+
+.total-income {
+  width: 220px;
+  border: 1px solid black;
+  height: 100px;
+  border-radius: 10px;
 }
