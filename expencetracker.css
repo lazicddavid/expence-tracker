@@ -121,7 +121,7 @@ span {
 
 .cards {
   display: grid;
-
+  position: absolute;
   grid-template-columns: 1fr 1fr;
   gap: 25px;
 }
@@ -145,4 +145,23 @@ span {
   border: 1px solid black;
   height: 100px;
   border-radius: 10px;
+  grid-column: 1 / -1;
+  justify-self: center;
+  width: 50%;
+}
+
+.total-income,
+.total-expense,
+.total-balance {
+  position: relative;
+}
+
+.evidence {
+  color: rgb(00, 00, 93);
+  font-weight: 700;
+  font-size: 140px; //ne reaguje, ispitati!
+  position: absolute;
+  top: 5px; /* malo spušten od vrha */
+  left: 10px; /* malo od desne ivice */
+  font-size: 14px;
 }
