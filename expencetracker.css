@@ -179,3 +179,10 @@ span {
   padding: 30px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
 }
+
+.history-panel section {
+  background: #fff;
+  border-radius: 20px;
+  padding: 18px 24px;
+  margin-bottom: 20px;
+}
