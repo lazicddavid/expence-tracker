@@ -165,3 +165,10 @@ span {
   top: 5px;
   left: 10px;
 }
+
+.dashboard {
+  display: grid;
+  grid-template-columns: auto 380px;
+  gap: 40px;
+  align-items: start;
+}
