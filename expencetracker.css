@@ -14,11 +14,12 @@ body {
   border: 2px solid wheat;
   display: flex;
   flex-direction: column;
-  border-radius: 16px;
+
   margin: 20px;
   height: 850px;
   width: 400px;
   background-color: #fbe0f7;
+  border-radius: 16px;
   position: relative;
 }
 
@@ -118,6 +119,11 @@ span {
 .main-container {
   margin: 0 auto;
   padding: 40px;
+  border: 2px solid wheat;
+  background-color: #fbe0f7;
+  border-radius: 16px;
+  margin: 20px;
+  height: 850px;
 }
 
 .cards {
@@ -156,14 +162,14 @@ span {
 .total-income,
 .total-expense,
 .total-balance {
-  border: 2px solid wheat;
+  background-color: gainsboro;
   position: relative;
 }
 
 .evidence {
   color: rgb(00, 00, 93);
   font-weight: 700;
-  font-size: 1rem;
+  font-size: 1.5rem;
   position: absolute;
   top: 5px;
   left: 10px;
