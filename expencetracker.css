@@ -135,13 +135,12 @@ span {
 
 .total-income {
   background-color: #fbe0f7;
-  width: 320px;
+
   height: 100px;
   border-radius: 10px;
 }
 
 .total-expense {
-  width: 320px;
   background-color: #fbe0f7;
   height: 100px;
   border-radius: 10px;
@@ -152,11 +151,10 @@ span {
   background-color: #fbe0f7;
   height: 100px;
   border-radius: 10px;
-
-  grid-column: 1 / -1;
   margin: 0 auto;
-
-  width: 320px;
+  grid-column: 1 / -1;
+  justify-self: center;
+  width: 50%;
 }
 
 .total-income,
