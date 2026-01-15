@@ -29,10 +29,12 @@
         </ul>
       </div>
 
-      <li class="menu-item logout">
-        <i class="fa-solid fa-arrow-right-from-bracket"></i>
-        <span>Sign out</span>
-      </li>
+      <ul>
+        <li class="menu-item logout">
+          <i class="fa-solid fa-arrow-right-from-bracket"></i>
+          <span>Sign out</span>
+        </li>
+      </ul>
     </aside>
     <div class="main-container">
       <div class="dashboard">
@@ -49,7 +51,35 @@
         </div>
 
         <div class="history-panel">
-          <h2>Recent history</h2>
+          <h2 class="panel-title">Recent History</h2>
+
+          <!-- SALARY -->
+          <div class="stats-group">
+            <div class="stats-header">
+              <span class="label">Min</span>
+              <span class="title">Salary</span>
+              <span class="label">Max</span>
+            </div>
+
+            <div class="stats-box">
+              <span class="value min-salary">$Infinity</span>
+              <span class="value max-salary">$-Infinity</span>
+            </div>
+          </div>
+
+          <!-- EXPENSE -->
+          <div class="stats-group">
+            <div class="stats-header">
+              <span class="label">Min</span>
+              <span class="title">Expense</span>
+              <span class="label">Max</span>
+            </div>
+
+            <div class="stats-box">
+              <span class="value min-expense">$Infinity</span>
+              <span class="value max-expense">$-Infinity</span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
