@@ -174,18 +174,17 @@ span {
   grid-template-columns: auto 380px;
   gap: 40px;
   align-items: start;
+  color: slategrey;
 }
 
 .history-panel {
-  background: #fdeff3;
   border-radius: 24px;
   padding: 30px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  max-height: 850px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.586);
 }
 
 .history-panel section {
-  background: #fff;
   border-radius: 20px;
   padding: 18px 24px;
-  margin-bottom: 20px;
 }
