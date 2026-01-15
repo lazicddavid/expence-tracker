@@ -162,8 +162,9 @@ span {
 .total-income,
 .total-expense,
 .total-balance {
-  background-color: gainsboro;
+  background: #fdeff3;
   position: relative;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.586);
 }
 
 .evidence {
@@ -173,6 +174,19 @@ span {
   position: absolute;
   top: 5px;
   left: 10px;
+}
+
+.amount {
+  font-size: 38px;
+  font-weight: 600;
+  color: #7a78a6;
+  position: absolute;
+  bottom: 1px;
+  left: 6px;
+}
+
+.balance-amount {
+  color: #8bc34a;
 }
 
 .dashboard {
