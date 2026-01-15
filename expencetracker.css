@@ -11,6 +11,7 @@ body {
 }
 
 .aside {
+  border: 2px solid wheat;
   display: flex;
   flex-direction: column;
   border-radius: 16px;
@@ -127,20 +128,20 @@ span {
 
 .total-income {
   background-color: #fbe0f7;
-  width: 220px;
+  width: 320px;
   height: 100px;
   border-radius: 10px;
 }
 
 .total-expense {
-  width: 220px;
+  width: 320px;
   background-color: #fbe0f7;
   height: 100px;
   border-radius: 10px;
 }
 
 .total-balance {
-  width: 220px;
+  width: 320px;
   background-color: #fbe0f7;
   height: 100px;
   border-radius: 10px;
@@ -152,6 +153,7 @@ span {
 .total-income,
 .total-expense,
 .total-balance {
+  border: 2px solid wheat;
   position: relative;
 }
 
