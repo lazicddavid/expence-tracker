@@ -185,13 +185,8 @@ span {
 .balance-amount {
   color: #8bc34a;
 }
-
-.balance-amount {
-  color: #8bc34a;
-}
-g .dashboard {
+.dashboard {
   display: grid;
-
   grid-template-columns: 1fr 380px;
   gap: 40px;
   width: 100%;
