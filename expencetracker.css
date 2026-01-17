@@ -274,3 +274,11 @@ span {
 .hidden {
   display: none;
 }
+
+.page-section {
+  display: none;
+}
+
+.page-section.active {
+  display: block;
+}
