@@ -172,6 +172,8 @@ span {
 }
 
 .amount {
+  display: block;
+  margin-top: 12px;
   font-size: 38px;
   font-weight: 600;
   color: #7a78a6;

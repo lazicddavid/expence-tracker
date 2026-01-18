@@ -39,11 +39,29 @@ const state = {
   expenses: [],
 };
 
-const getTotalIncome = () => state.incomes.reduce((sum, v) => sum + v, 0);
+function getTotalIncome() {
+  let total = 0;
 
-const getTotalExpense = () => state.expenses.reduce((sum, v) => sum + v, 0);
+  for (let i = 0; i < state.incomes.length; i++) {
+    total += state.incomes[i];
+  }
 
-const getBalance = () => getTotalIncome() - getTotalExpense();
+  return total;
+}
+
+function getTotalExpense() {
+  let total = 0;
+
+  for (let i = 0; i < state.expenses.length; i++) {
+    total += state.expenses[i];
+  }
+
+  return total;
+}
+
+function getBalance() {
+  return getTotalIncome() - getTotalExpense();
+}
 
 const totalIncomeEl = document.getElementById("totalIncome");
 const totalExpenseEl = document.getElementById("totalExpense");
@@ -61,7 +79,7 @@ const addExpenseBtn = document.querySelector(
   "#expensesSection .add-income-btn",
 );
 
-function updateUI() {
+function updateDashboard() {
   totalIncomeEl.textContent = `$${getTotalIncome()}`;
   totalExpenseEl.textContent = `$${getTotalExpense()}`;
   totalBalanceEl.textContent = `$${getBalance()}`;
@@ -72,7 +90,7 @@ addIncomeBtn.addEventListener("click", () => {
   if (!value || value <= 0) return;
 
   state.incomes.push(value);
-  updateUI();
+  updateDashboard();
 
   incomeAmountInput.value = "";
 });
@@ -82,9 +100,9 @@ addExpenseBtn.addEventListener("click", () => {
   if (!value || value <= 0) return;
 
   state.expenses.push(value);
-  updateUI();
+  updateDashboard();
 
   expenseAmountInput.value = "";
 });
 
-updateUI();
+updateDashboard();
