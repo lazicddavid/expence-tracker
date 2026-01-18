@@ -3,6 +3,7 @@ const DOM = {
   dashboardSection: document.getElementById("dashboardSection"),
   incomesSection: document.getElementById("incomesSection"),
   expensesSection: document.getElementById("expensesSection"),
+  historyPanel: document.querySelector(".history-panel"),
 };
 
 function hideAllSections() {
@@ -40,3 +41,6 @@ function hideAllSections() {
   DOM.expensesSection.classList.add("hidden");
   DOM.historyPanel.classList.add("hidden");
 }
+
+let totalExpenses = 0;
+document.querySelector(".expenses-total").textContent = `$${totalExpenses}`;

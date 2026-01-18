@@ -265,10 +265,6 @@ span {
   display: none;
 }
 
-.page-section {
-  display: none;
-}
-
 .page-section.active {
   display: block;
 }
@@ -324,4 +320,20 @@ span {
   font-size: 16px;
   cursor: pointer;
   width: fit-content;
+}
+
+.expenses {
+  background: #fff;
+  border-radius: 16px;
+  padding: 20px;
+}
+
+.expenses h2 {
+  margin-bottom: 10px;
+}
+
+.expenses-total {
+  font-size: 24px;
+  font-weight: bold;
+  color: crimson;
 }
