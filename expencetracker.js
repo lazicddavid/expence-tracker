@@ -1,13 +1,12 @@
 const DOM = {
   menuItems: document.querySelectorAll(".category ul li"),
-  dashboardSection: document.getElementById("dashboardSection"),
+  dashboardCards: document.getElementById("dashboardCards"),
   incomesSection: document.getElementById("incomesSection"),
   expensesSection: document.getElementById("expensesSection"),
-  historyPanel: document.querySelector(".history-panel"),
 };
 
-function hideAllSections() {
-  DOM.dashboardSection.classList.add("hidden");
+function hideForms() {
+  DOM.dashboardCards.classList.add("hidden");
   DOM.incomesSection.classList.add("hidden");
   DOM.expensesSection.classList.add("hidden");
 }
@@ -17,12 +16,12 @@ DOM.menuItems.forEach((item) => {
     DOM.menuItems.forEach((li) => li.classList.remove("active"));
     item.classList.add("active");
 
-    hideAllSections();
-
     const text = item.textContent.toLowerCase();
 
+    hideForms();
+
     if (text.includes("dashboard")) {
-      DOM.dashboardSection.classList.remove("hidden");
+      DOM.dashboardCards.classList.remove("hidden");
     }
 
     if (text.includes("incomes")) {
@@ -34,13 +33,3 @@ DOM.menuItems.forEach((item) => {
     }
   });
 });
-
-function hideAllSections() {
-  DOM.dashboardSection.classList.add("hidden");
-  DOM.incomesSection.classList.add("hidden");
-  DOM.expensesSection.classList.add("hidden");
-  DOM.historyPanel.classList.add("hidden");
-}
-
-let totalExpenses = 0;
-document.querySelector(".expenses-total").textContent = `$${totalExpenses}`;

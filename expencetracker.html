@@ -2,17 +2,18 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="stylesheet" href="expencetracker.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="expencetracker.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
     />
+
     <title>Expense Tracker</title>
   </head>
 
   <body>
-    <!-- ASIDE – LEVO -->
     <aside class="aside">
       <div class="user">
         <img src="avatar.png" />
@@ -24,11 +25,11 @@
 
       <div class="category">
         <ul>
-          <li><i class="fa-solid fa-chart-line"></i> Dashboard</li>
-          <li><i class="fa-solid fa-credit-card"></i> View Transactions</li>
           <li class="active">
-            <i class="fa-solid fa-money-bill-trend-up"></i> Incomes
+            <i class="fa-solid fa-chart-line"></i> Dashboard
           </li>
+          <li><i class="fa-solid fa-credit-card"></i> View Transactions</li>
+          <li><i class="fa-solid fa-money-bill-trend-up"></i> Incomes</li>
           <li><i class="fa-solid fa-money-bill-transfer"></i> Expenses</li>
         </ul>
       </div>
@@ -41,15 +42,27 @@
       </ul>
     </aside>
 
-    <!-- MAIN – INCOME VIEW -->
     <main class="main-container">
-      <!-- DASHBOARD -->
-      <section id="dashboardSection">
-        <!-- ovde će ići tvoje cards kasnije -->
-      </section>
+      <div id="dashboardCards">
+        <div class="cards">
+          <div class="total-income">
+            <span class="evidence">Total Income</span>
+            <span class="amount">$0</span>
+          </div>
 
-      <!-- INCOMES -->
-      <section id="incomesSection">
+          <div class="total-expense">
+            <span class="evidence">Total Expense</span>
+            <span class="amount">$0</span>
+          </div>
+
+          <div class="total-balance">
+            <span class="evidence">Total Balance</span>
+            <span class="amount balance-amount">$0</span>
+          </div>
+        </div>
+      </div>
+
+      <section id="incomesSection" class="hidden">
         <h1 class="page-title">Incomes</h1>
 
         <div class="income-layout">
@@ -69,26 +82,34 @@
 
             <button class="add-income-btn">+ Add Income</button>
           </div>
-
-          <div class="income-summary">
-            <div class="total-income">
-              Total Income:
-              <span class="income-amount">$0</span>
-            </div>
-          </div>
         </div>
       </section>
 
-      <!-- EXPENSES -->
       <section id="expensesSection" class="hidden">
-        <div class="expenses">
-          <h2>Expenses</h2>
-          <div class="expenses-total">$0</div>
+        <h1 class="page-title">Expenses</h1>
+
+        <div class="income-layout">
+          <div class="income-form">
+            <input type="text" placeholder="Expense Title" />
+            <input type="number" placeholder="Expense Amount" />
+            <input type="date" />
+
+            <select>
+              <option value="">Select Option</option>
+              <option value="food">Food</option>
+              <option value="rent">Rent</option>
+              <option value="bills">Bills</option>
+              <option value="other">Other</option>
+            </select>
+
+            <textarea placeholder="Add a reference"></textarea>
+
+            <button class="add-income-btn">+ Add Expense</button>
+          </div>
         </div>
       </section>
     </main>
 
-    <!-- RECENT HISTORY – DESNO -->
     <div class="history-panel">
       <h2 class="panel-title">Recent History</h2>
 
