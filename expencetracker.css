@@ -130,6 +130,11 @@ span {
   grid-template-columns: 1fr 1fr;
 }
 
+.cards {
+  display: grid;
+  gap: 24px;
+  grid-template-columns: 1fr 1fr;
+}
 .total-income {
   background-color: #fbe0f7;
 
