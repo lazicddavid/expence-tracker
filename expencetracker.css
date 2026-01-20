@@ -308,3 +308,20 @@ span {
   color: rgb(0, 0, 93);
   margin-bottom: 24px;
 }
+
+#expensesSection .total-expense,
+#incomesSection .total-income {
+  width: 100%;
+  height: auto;
+  background: #fff5f8;
+  border-radius: 20px;
+  padding: 24px 32px;
+  font-size: 26px;
+  font-weight: 600;
+  color: rgb(0, 0, 93);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 40px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
