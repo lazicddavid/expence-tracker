@@ -332,3 +332,10 @@ span {
   margin-left: 10px;
   position: static;
 }
+
+.expense-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 420px;
+}
