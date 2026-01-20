@@ -68,17 +68,23 @@
       <!-- INCOMES SECTION -->
       <section id="incomesSection" class="hidden">
         <h1 class="page-title">Incomes</h1>
+<form class="income-form">
+  <input type="text" class="income-name" placeholder="Income name" />
+  <input type="date" class="income-date" />
+  <input type="number" class="income-amount" placeholder="Amount" />
 
-        <form class="income-form">
-          <input type="text" class="income-name" placeholder="Income name" />
+  <select>
+    <option value="">Select Option</option>
+    <option value="salary">Salary</option>
+    <option value="freelance">Freelance</option>
+    <option value="other">Other</option>
+  </select>
 
-          <input type="date" class="income-date" />
+  <textarea placeholder="Add a reference"></textarea>
 
-          <input type="number" class="income-amount" placeholder="Amount" />
-
-          <button type="button" class="add-income-btn">Add income</button>
+  <button type="button" class="add-income-btn">Add income</button>
+</form>
         </form>
-
         <select>
           <option value="">Select Option</option>
           <option value="salary">Salary</option>
@@ -93,13 +99,24 @@
       <section id="expensesSection" class="hidden">
         <h1 class="page-title">Expenses</h1>
 
-        <form class="expense-form">
-          <input type="text" class="expense-name" placeholder="Expense name" />
+<form class="expense-form">
+  <input type="text" class="expense-name" placeholder="Expense name" />
+  <input type="date" class="expense-date" />
+  <input type="number" class="expense-amount" placeholder="Amount" />
 
-          <input type="date" class="expense-date" />
+  <select>
+    <option value="">Select Option</option>
+    <option value="food">Food</option>
+    <option value="rent">Rent</option>
+    <option value="bills">Bills</option>
+    <option value="other">Other</option>
+  </select>
 
-          <button type="button" class="add-expense-btn">Add expense</button>
-        </form>
+  <textarea placeholder="Add a reference"></textarea>
+
+  <button type="button" class="add-expense-btn">Add expense</button>
+</form>
+
 
         <select>
           <option value="">Select Option</option>
@@ -133,3 +150,4 @@
     <script src="expencetracker.js"></script>
   </body>
 </html>
+    
