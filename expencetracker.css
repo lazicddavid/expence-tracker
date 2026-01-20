@@ -325,3 +325,10 @@ span {
   margin-bottom: 40px;
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
 }
+#expensesSection .total-expense .amount,
+#incomesSection .total-income .amount {
+  color: #3cb300;
+  font-size: 34px;
+  margin-left: 10px;
+  position: static;
+}
