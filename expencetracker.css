@@ -339,3 +339,12 @@ span {
   gap: 20px;
   max-width: 420px;
 }
+
+.expense-form input,
+.expense-form select,
+.expense-form textarea {
+  padding: 14px 16px;
+  border-radius: 12px;
+  border: 1px solid #eee;
+  font-size: 16px;
+}
