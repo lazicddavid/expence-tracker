@@ -301,3 +301,10 @@ span {
 #expensesSection {
   padding: 20px 30px;
 }
+
+.page-title {
+  font-size: 32px;
+  font-weight: 700;
+  color: rgb(0, 0, 93);
+  margin-bottom: 24px;
+}
