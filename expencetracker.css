@@ -296,3 +296,8 @@ span {
   cursor: pointer;
   width: fit-content;
 }
+
+#incomesSection,
+#expensesSection {
+  padding: 20px 30px;
+}
