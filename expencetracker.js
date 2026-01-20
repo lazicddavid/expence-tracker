@@ -11,6 +11,9 @@ function hideForms() {
   DOM.expensesSection.classList.add("hidden");
 }
 
+hideForms();
+DOM.dashboardCards.classList.remove("hidden");
+
 DOM.menuItems.forEach((item) => {
   item.addEventListener("click", () => {
     DOM.menuItems.forEach((li) => li.classList.remove("active"));
@@ -75,8 +78,9 @@ const addIncomeBtn = document.querySelector("#incomesSection .add-income-btn");
 const expenseAmountInput = document.querySelector(
   "#expensesSection input[type='number']",
 );
+
 const addExpenseBtn = document.querySelector(
-  "#expensesSection .add-income-btn",
+  "#expensesSection .add-expense-btn",
 );
 
 function updateDashboard() {
