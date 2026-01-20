@@ -14,6 +14,7 @@
   </head>
 
   <body>
+    <!-- SIDEBAR -->
     <aside class="aside">
       <div class="user">
         <img src="avatar.png" />
@@ -42,7 +43,9 @@
       </ul>
     </aside>
 
+    <!-- MAIN CONTENT -->
     <main class="main-container">
+      <!-- DASHBOARD -->
       <div id="dashboardCards">
         <div class="cards">
           <div class="total-income">
@@ -62,54 +65,57 @@
         </div>
       </div>
 
+      <!-- INCOMES SECTION -->
       <section id="incomesSection" class="hidden">
         <h1 class="page-title">Incomes</h1>
 
-        <div class="income-layout">
-          <div class="income-form">
-            <input type="text" placeholder="Salary Title" />
-            <input type="number" placeholder="Salary Amount" />
-            <input type="date" />
+        <form class="income-form">
+          <input type="text" class="income-name" placeholder="Income name" />
 
-            <select>
-              <option value="">Select Option</option>
-              <option value="salary">Salary</option>
-              <option value="freelance">Freelance</option>
-              <option value="other">Other</option>
-            </select>
+          <input type="date" class="income-date" />
 
-            <textarea placeholder="Add a reference"></textarea>
+          <input type="number" class="income-amount" placeholder="Amount" />
 
-            <button class="add-income-btn">+ Add Income</button>
-          </div>
-        </div>
+          <button type="button" class="add-income-btn">Add income</button>
+        </form>
+
+        <select>
+          <option value="">Select Option</option>
+          <option value="salary">Salary</option>
+          <option value="freelance">Freelance</option>
+          <option value="other">Other</option>
+        </select>
+
+        <textarea placeholder="Add a reference"></textarea>
       </section>
 
+      <!-- EXPENSES SECTION -->
       <section id="expensesSection" class="hidden">
         <h1 class="page-title">Expenses</h1>
 
-        <div class="income-layout">
-          <div class="income-form">
-            <input type="text" placeholder="Expense Title" />
-            <input type="number" placeholder="Expense Amount" />
-            <input type="date" />
+        <form class="expense-form">
+          <input type="text" class="expense-name" placeholder="Expense name" />
 
-            <select>
-              <option value="">Select Option</option>
-              <option value="food">Food</option>
-              <option value="rent">Rent</option>
-              <option value="bills">Bills</option>
-              <option value="other">Other</option>
-            </select>
+          <input type="date" class="expense-date" />
 
-            <textarea placeholder="Add a reference"></textarea>
+          <input type="number" class="expense-amount" placeholder="Amount" />
 
-            <button class="add-income-btn">+ Add Expense</button>
-          </div>
-        </div>
+          <button type="button" class="add-expense-btn">Add expense</button>
+        </form>
+
+        <select>
+          <option value="">Select Option</option>
+          <option value="food">Food</option>
+          <option value="rent">Rent</option>
+          <option value="bills">Bills</option>
+          <option value="other">Other</option>
+        </select>
+
+        <textarea placeholder="Add a reference"></textarea>
       </section>
     </main>
 
+    <!-- HISTORY PANEL -->
     <div class="history-panel">
       <h2 class="panel-title">Recent History</h2>
 
@@ -125,21 +131,6 @@
           <span class="value max-salary">$-Infinity</span>
         </div>
       </div>
-
-      <div class="stats-group">
-        <div class="stats-header">
-          <span class="label">Min</span>
-          <span class="title">Expense</span>
-          <span class="label">Max</span>
-        </div>
-
-        <div class="stats-box">
-          <span class="value min-expense">$Infinity</span>
-          <span class="value max-expense">$-Infinity</span>
-        </div>
-      </div>
     </div>
-
-    <script src="expencetracker.js"></script>
   </body>
 </html>

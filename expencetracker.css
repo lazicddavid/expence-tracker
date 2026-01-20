@@ -130,14 +130,8 @@ span {
   grid-template-columns: 1fr 1fr;
 }
 
-.cards {
-  display: grid;
-  gap: 24px;
-  grid-template-columns: 1fr 1fr;
-}
 .total-income {
   background-color: #fbe0f7;
-
   height: 100px;
   border-radius: 10px;
 }
@@ -336,6 +330,12 @@ span {
 
 .expenses h2 {
   margin-bottom: 10px;
+}
+
+.expenses-total {
+  font-size: 24px;
+  font-weight: bold;
+  color: crimson;
 }
 
 .expenses-total {

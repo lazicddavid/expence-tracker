@@ -1,5 +1,5 @@
 const DOM = {
-  menuItems: document.querySelectorAll(".category ul li"),
+  menuItems: document.querySelectorAll(".category ul li"), //staviti klasu
   dashboardCards: document.getElementById("dashboardCards"),
   incomesSection: document.getElementById("incomesSection"),
   expensesSection: document.getElementById("expensesSection"),
