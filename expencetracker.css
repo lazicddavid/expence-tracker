@@ -269,31 +269,6 @@ span {
   display: block;
 }
 
-.income-layout {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 48px;
-}
-
-.income-summary {
-  display: flex;
-  justify-content: flex-end;
-  align-items: flex-start;
-}
-
-.total-income {
-  background: #fff5f8;
-  padding: 24px 32px;
-  border-radius: 16px;
-  font-size: 24px;
-  font-weight: 600;
-}
-
-.total-income span {
-  color: #3cb300;
-  font-size: 32px;
-}
-
 .income-form {
   display: flex;
   flex-direction: column;
@@ -320,26 +295,4 @@ span {
   font-size: 16px;
   cursor: pointer;
   width: fit-content;
-}
-
-.expenses {
-  background: #fff;
-  border-radius: 16px;
-  padding: 20px;
-}
-
-.expenses h2 {
-  margin-bottom: 10px;
-}
-
-.expenses-total {
-  font-size: 24px;
-  font-weight: bold;
-  color: crimson;
-}
-
-.expenses-total {
-  font-size: 24px;
-  font-weight: bold;
-  color: crimson;
 }
