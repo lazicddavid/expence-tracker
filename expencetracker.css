@@ -348,3 +348,15 @@ span {
   border: 1px solid #eee;
   font-size: 16px;
 }
+
+.add-expense-btn {
+  margin-top: 12px;
+  background: #ff6b9a;
+  color: white;
+  border: none;
+  border-radius: 999px;
+  padding: 14px 24px;
+  font-size: 16px;
+  cursor: pointer;
+  width: fit-content;
+}
