@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+    <!-- STYLES -->
     <link rel="stylesheet" href="expencetracker.css" />
     <link
       rel="stylesheet"
@@ -14,17 +15,21 @@
   </head>
 
   <body>
-    <!-- SIDEBAR -->
+    <!-- =========================
+         SIDEBAR
+    ========================== -->
     <aside class="aside">
+      <!-- USER INFO -->
       <div class="user">
-        <img src="avatar.png" />
+        <img src="avatar.png" alt="User avatar" />
         <div class="user-info">
           <span class="name">Dinesh</span>
           <span>Your expenses</span>
         </div>
       </div>
 
-      <div class="category">
+      <!-- NAVIGATION -->
+      <nav class="category">
         <ul>
           <li class="active">
             <i class="fa-solid fa-chart-line"></i> Dashboard
@@ -33,8 +38,9 @@
           <li><i class="fa-solid fa-money-bill-trend-up"></i> Incomes</li>
           <li><i class="fa-solid fa-money-bill-transfer"></i> Expenses</li>
         </ul>
-      </div>
+      </nav>
 
+      <!-- LOGOUT -->
       <ul>
         <li class="menu-item logout">
           <i class="fa-solid fa-arrow-right-from-bracket"></i>
@@ -43,10 +49,12 @@
       </ul>
     </aside>
 
-    <!-- MAIN CONTENT -->
+    <!-- =========================
+         MAIN CONTENT
+    ========================== -->
     <main class="main-container">
-      <!-- DASHBOARD -->
-      <div id="dashboardCards">
+      <!-- ===== DASHBOARD ===== -->
+      <section id="dashboardCards">
         <div class="cards">
           <div class="total-income">
             <span class="evidence">Total Income</span>
@@ -63,75 +71,80 @@
             <span class="amount balance-amount" id="totalBalance">$0</span>
           </div>
         </div>
-      </div>
-
-      <!-- INCOMES SECTION -->
-      <section id="incomesSection" class="hidden">
-        <h1 class="page-title">Incomes</h1>
-<form class="income-form">
-  <input type="text" class="income-name" placeholder="Income name" />
-  <input type="date" class="income-date" />
-  <input type="number" class="income-amount" placeholder="Amount" />
-
-  <select>
-    <option value="">Select Option</option>
-    <option value="salary">Salary</option>
-    <option value="freelance">Freelance</option>
-    <option value="other">Other</option>
-  </select>
-
-  <textarea placeholder="Add a reference"></textarea>
-
-  <button type="button" class="add-income-btn">Add income</button>
-</form>
-        </form>
-        <select>
-          <option value="">Select Option</option>
-          <option value="salary">Salary</option>
-          <option value="freelance">Freelance</option>
-          <option value="other">Other</option>
-        </select>
-
-        <textarea placeholder="Add a reference"></textarea>
       </section>
 
-      <!-- EXPENSES SECTION -->
-      <section id="expensesSection" class="hidden">
+      <!-- =========================
+           INCOMES PAGE
+      ========================== -->
+      <section id="incomesSection" class="hidden incomes-page">
+        <h1 class="page-title">Incomes</h1>
+
+        <!-- TOTAL BAR -->
+        <div class="income-total-bar">
+          <span>Total Income:</span>
+          <span class="income-total-amount">$0</span>
+        </div>
+
+        <!-- FORM -->
+        <form class="income-form">
+          <input type="text" placeholder="Salary Title" />
+          <input type="number" placeholder="Salary Amount" />
+          <input type="date" />
+
+          <select>
+            <option value="">Select Option</option>
+            <option>Salary</option>
+            <option>Freelance</option>
+            <option>Other</option>
+          </select>
+
+          <textarea placeholder="Add A Reference"></textarea>
+
+          <button type="button" class="add-income-btn">
+            <i class="fa-solid fa-plus"></i> Add Income
+          </button>
+        </form>
+      </section>
+
+      <!-- =========================
+           EXPENSES PAGE
+      ========================== -->
+      <section id="expensesSection" class="hidden expenses-page">
         <h1 class="page-title">Expenses</h1>
 
-<form class="expense-form">
-  <input type="text" class="expense-name" placeholder="Expense name" />
-  <input type="date" class="expense-date" />
-  <input type="number" class="expense-amount" placeholder="Amount" />
+        <!-- TOTAL BAR -->
+        <div class="expense-total-bar">
+          <span>Total Expense:</span>
+          <span class="expense-total-amount">$0</span>
+        </div>
 
-  <select>
-    <option value="">Select Option</option>
-    <option value="food">Food</option>
-    <option value="rent">Rent</option>
-    <option value="bills">Bills</option>
-    <option value="other">Other</option>
-  </select>
+        <!-- FORM -->
+        <form class="expense-form">
+          <input type="text" placeholder="Expense Title" />
+          <input type="number" placeholder="Expense Amount" />
+          <input type="date" />
 
-  <textarea placeholder="Add a reference"></textarea>
+          <select>
+            <option value="">Select Option</option>
+            <option>Food</option>
+            <option>Rent</option>
+            <option>Bills</option>
+            <option>Other</option>
+          </select>
 
-  <button type="button" class="add-expense-btn">Add expense</button>
-</form>
+          <textarea placeholder="Add A Reference"></textarea>
 
-
-        <select>
-          <option value="">Select Option</option>
-          <option value="food">Food</option>
-          <option value="rent">Rent</option>
-          <option value="bills">Bills</option>
-          <option value="other">Other</option>
-        </select>
-
-        <textarea placeholder="Add a reference"></textarea>
+          <button type="button" class="add-expense-btn">
+            <i class="fa-solid fa-plus"></i> Add Expense
+          </button>
+        </form>
       </section>
     </main>
 
-    <!-- HISTORY PANEL -->
-    <div class="history-panel">
+    <!-- =========================
+         HISTORY PANEL
+    ========================== -->
+    <aside class="history-panel">
       <h2 class="panel-title">Recent History</h2>
 
       <div class="stats-group">
@@ -146,8 +159,9 @@
           <span class="value max-salary">$-Infinity</span>
         </div>
       </div>
-    </div>
+    </aside>
+
+    <!-- SCRIPT -->
     <script src="expencetracker.js"></script>
   </body>
 </html>
-    

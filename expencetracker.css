@@ -237,10 +237,6 @@ span {
 
 .stats-header .label:last-child {
   text-align: right;
-}
-
-.stats-header .title {
-  font-size: 26px;
   font-weight: 700;
   color: rgb(0, 0, 93);
 }
@@ -269,108 +265,151 @@ span {
   display: block;
 }
 
-.income-form {
+/* =============================
+   INCOMES PAGE – EXACT LAYOUT
+============================= */
+
+.incomes-page {
   display: flex;
   flex-direction: column;
-  gap: 20px;
-  max-width: 420px;
+  gap: 30px;
 }
 
-.income-form input,
-.income-form select,
-.income-form textarea {
-  padding: 14px 16px;
-  border-radius: 12px;
-  border: 1px solid #eee;
-  font-size: 16px;
-}
-
-.add-income-btn {
-  margin-top: 12px;
-  background: #ff6b9a;
-  color: white;
-  border: none;
-  border-radius: 999px;
-  padding: 14px 24px;
-  font-size: 16px;
-  cursor: pointer;
-  width: fit-content;
-}
-
-#incomesSection,
-#expensesSection {
-  padding: 20px 30px;
-}
-
+/* TITLE */
 .page-title {
   font-size: 32px;
   font-weight: 700;
-  color: rgb(0, 0, 93);
-  margin-bottom: 24px;
+  color: #1f2a6d;
 }
 
-#expensesSection .total-expense,
-#incomesSection .total-income {
+/* TOTAL BAR */
+.income-total-bar {
   width: 100%;
-  height: auto;
   background: #fff5f8;
   border-radius: 20px;
-  padding: 24px 32px;
+  padding: 22px 32px;
   font-size: 26px;
   font-weight: 600;
-  color: rgb(0, 0, 93);
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 40px;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-}
-#expensesSection .total-expense .amount,
-#incomesSection .total-income .amount {
-  color: #3cb300;
-  font-size: 34px;
-  margin-left: 10px;
-  position: static;
+  gap: 10px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
 }
 
-.expense-form {
+.income-total-amount {
+  color: #3cb300;
+  font-size: 34px;
+}
+
+/* FORM */
+.income-form {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 22px;
   max-width: 420px;
 }
 
-.expense-form input,
-.expense-form select,
-.expense-form textarea {
+/* INPUTS */
+.income-form input,
+.income-form select,
+.income-form textarea {
+  width: 100%;
   padding: 14px 16px;
-  border-radius: 12px;
+  border-radius: 14px;
   border: 1px solid #eee;
   font-size: 16px;
+  background: white;
 }
 
-.add-expense-btn {
-  margin-top: 12px;
+/* TEXTAREA */
+.income-form textarea {
+  height: 120px;
+  resize: none;
+}
+
+/* BUTTON */
+.add-income-btn {
+  margin-top: 10px;
   background: #ff6b9a;
   color: white;
   border: none;
   border-radius: 999px;
-  padding: 14px 24px;
+  padding: 14px 28px;
   font-size: 16px;
   cursor: pointer;
-  width: fit-content;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
 }
 
-.income-form input,
-.income-form select,
-.income-form textarea,
+/* =============================
+   EXPENSES PAGE – SAME DESIGN
+============================= */
+
+.expenses-page {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+/* TOTAL BAR */
+.expense-total-bar {
+  width: 100%;
+  background: #fff5f8;
+  border-radius: 20px;
+  padding: 22px 32px;
+  font-size: 26px;
+  font-weight: 600;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+}
+
+.expense-total-amount {
+  color: #3cb300;
+  font-size: 34px;
+}
+
+/* FORM */
+.expense-form {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  max-width: 420px;
+}
+
+/* INPUTS */
 .expense-form input,
 .expense-form select,
 .expense-form textarea {
   width: 100%;
+  padding: 14px 16px;
+  border-radius: 14px;
+  border: 1px solid #eee;
+  font-size: 16px;
+  background: white;
 }
 
-.add-income-btn,
+/* TEXTAREA */
+.expense-form textarea {
+  height: 120px;
+  resize: none;
+}
+
+/* BUTTON */
 .add-expense-btn {
-  margin-top: 20px;
+  margin-top: 10px;
+  background: #ff6b9a;
+  color: white;
+  border: none;
+  border-radius: 999px;
+  padding: 14px 28px;
+  font-size: 16px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
 }
