@@ -3,7 +3,8 @@ const DOM = {
   dashboardCards: document.getElementById("dashboardCards"),
   incomesSection: document.getElementById("incomesSection"),
   expensesSection: document.getElementById("expensesSection"),
-  incomeForm: document.querySelector(".incomeSection"),
+  incomeForm: document.querySelector(".income-form"),
+  expenseForm: document.querySelector(".expanse-form"),
 };
 
 function hideForms() {
