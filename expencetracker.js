@@ -72,18 +72,13 @@ const totalIncomeEl = document.getElementById("totalIncome");
 const totalExpenseEl = document.getElementById("totalExpense");
 const totalBalanceEl = document.getElementById("totalBalance");
 
-const incomeAmountInput = document.querySelector(
-  "#incomesSection input[type='number']",
-);
-const addIncomeBtn = document.querySelector("#incomesSection .add-income-btn");
+// INCOME
+const incomeAmountInput = DOM.incomeForm.querySelector(".income-amount");
+const addIncomeBtn = DOM.incomeForm.querySelector(".add-income-btn");
 
-const expenseAmountInput = document.querySelector(
-  "#expensesSection input[type='number']",
-);
-
-const addExpenseBtn = document.querySelector(
-  "#expensesSection .add-expense-btn",
-);
+// EXPENSE
+const expenseAmountInput = DOM.expenseForm.querySelector(".expense-amount");
+const addExpenseBtn = DOM.expenseForm.querySelector(".add-expense-btn");
 
 function updateDashboard() {
   totalIncomeEl.textContent = `$${getTotalIncome()}`;
