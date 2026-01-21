@@ -3,6 +3,7 @@ const DOM = {
   dashboardCards: document.getElementById("dashboardCards"),
   incomesSection: document.getElementById("incomesSection"),
   expensesSection: document.getElementById("expensesSection"),
+  incomeForm: document.querySelector(".incomeSection"),
 };
 
 function hideForms() {

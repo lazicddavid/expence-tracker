@@ -413,6 +413,7 @@ span {
   align-items: center;
   gap: 8px;
 }
+
 .hidden {
   display: none !important;
 }
