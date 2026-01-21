@@ -4,7 +4,8 @@ const DOM = {
   incomesSection: document.getElementById("incomesSection"),
   expensesSection: document.getElementById("expensesSection"),
   incomeForm: document.querySelector(".income-form"),
-  expenseForm: document.querySelector(".expanse-form"),
+  expenseForm: document.querySelector(".expense-form"),
+  recenthistory: document.addEventListener("recenthhistory"),
 };
 
 function hideForms() {
@@ -35,6 +36,10 @@ DOM.menuItems.forEach((item) => {
 
     if (text.includes("expenses")) {
       DOM.expensesSection.classList.remove("hidden");
+
+      if (text.includes("recenthistory")) {
+        DOM.recenthistory.classList.remove("hidden");
+      }
     }
   });
 });
@@ -72,11 +77,11 @@ const totalIncomeEl = document.getElementById("totalIncome");
 const totalExpenseEl = document.getElementById("totalExpense");
 const totalBalanceEl = document.getElementById("totalBalance");
 
-// INCOME
+//income
 const incomeAmountInput = DOM.incomeForm.querySelector(".income-amount");
 const addIncomeBtn = DOM.incomeForm.querySelector(".add-income-btn");
 
-// EXPENSE
+//expanse
 const expenseAmountInput = DOM.expenseForm.querySelector(".expense-amount");
 const addExpenseBtn = DOM.expenseForm.querySelector(".add-expense-btn");
 
@@ -86,24 +91,12 @@ function updateDashboard() {
   totalBalanceEl.textContent = `$${getBalance()}`;
 }
 
-addIncomeBtn.addEventListener("click", () => {
+addIncomeBtn.addEventListener("click", (e) => {
+  e.preventDefault();
+
   const value = Number(incomeAmountInput.value);
   if (!value || value <= 0) return;
-
-  state.incomes.push(value);
   updateDashboard();
-
-  incomeAmountInput.value = "";
-});
-
-addExpenseBtn.addEventListener("click", () => {
-  const value = Number(expenseAmountInput.value);
-  if (!value || value <= 0) return;
-
-  state.expenses.push(value);
-  updateDashboard();
-
-  expenseAmountInput.value = "";
 });
 
 updateDashboard();
