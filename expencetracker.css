@@ -265,24 +265,18 @@ span {
   display: block;
 }
 
-/* =============================
-   INCOMES PAGE – EXACT LAYOUT
-============================= */
-
 .incomes-page {
   display: flex;
   flex-direction: column;
   gap: 30px;
 }
 
-/* TITLE */
 .page-title {
   font-size: 32px;
   font-weight: 700;
   color: #1f2a6d;
 }
 
-/* TOTAL BAR */
 .income-total-bar {
   width: 100%;
   background: #fff5f8;
@@ -302,7 +296,6 @@ span {
   font-size: 34px;
 }
 
-/* FORM */
 .income-form {
   display: flex;
   flex-direction: column;
@@ -310,7 +303,6 @@ span {
   max-width: 420px;
 }
 
-/* INPUTS */
 .income-form input,
 .income-form select,
 .income-form textarea {
@@ -322,13 +314,11 @@ span {
   background: white;
 }
 
-/* TEXTAREA */
 .income-form textarea {
   height: 120px;
   resize: none;
 }
 
-/* BUTTON */
 .add-income-btn {
   margin-top: 10px;
   background: #ff6b9a;
@@ -343,17 +333,12 @@ span {
   gap: 8px;
 }
 
-/* =============================
-   EXPENSES PAGE – SAME DESIGN
-============================= */
-
 .expenses-page {
   display: flex;
   flex-direction: column;
   gap: 30px;
 }
 
-/* TOTAL BAR */
 .expense-total-bar {
   width: 100%;
   background: #fff5f8;
@@ -373,7 +358,6 @@ span {
   font-size: 34px;
 }
 
-/* FORM */
 .expense-form {
   display: flex;
   flex-direction: column;
@@ -381,7 +365,6 @@ span {
   max-width: 420px;
 }
 
-/* INPUTS */
 .expense-form input,
 .expense-form select,
 .expense-form textarea {
@@ -393,13 +376,11 @@ span {
   background: white;
 }
 
-/* TEXTAREA */
 .expense-form textarea {
   height: 120px;
   resize: none;
 }
 
-/* BUTTON */
 .add-expense-btn {
   margin-top: 10px;
   background: #ff6b9a;

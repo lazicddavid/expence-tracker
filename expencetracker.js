@@ -54,69 +54,89 @@ function renderDashboard() {
   let totalIncome = 0;
   let totalExpense = 0;
 
-  state.incomes.forEach((item) => {
-    totalIncome += item.amount;
-  });
-
-  state.expenses.forEach((item) => {
-    totalExpense += item.amount;
-  });
+  state.incomes.forEach((item) => (totalIncome += item.amount));
+  state.expenses.forEach((item) => (totalExpense += item.amount));
 
   totalIncomeEl.textContent = `$${totalIncome}`;
   totalExpenseEl.textContent = `$${totalExpense}`;
   totalBalanceEl.textContent = `$${totalIncome - totalExpense}`;
 }
 
+function renderRecentHistory() {
+  DOM.recentHistory.innerHTML = "<h2 class='panel-title'>Recent History</h2>";
+
+  const allItems = [...state.incomes, ...state.expenses]
+    .sort((a, b) => new Date(b.date) - new Date(a.date))
+    .slice(0, 5);
+
+  allItems.forEach((item) => {
+    const div = document.createElement("div");
+    div.className = "history-item";
+
+    div.innerHTML = `
+      <strong>${item.type.toUpperCase()}</strong> |
+      ${item.category || "—"} |
+      $${item.amount}<br>
+      <small>${item.date}</small>
+      <p>${item.reference || ""}</p>
+    `;
+
+    DOM.recentHistory.appendChild(div);
+  });
+}
+
 function render() {
   renderDashboard();
+  renderRecentHistory();
 }
 
-function updateDashboard() {
-  const totalIncome = state.incomes.reduce((sum, val) => sum + val, 0);
-  const totalExpenses = state.expenses.reduce((sum, val) => sum + val, 0);
-  const balance = totalIncome - totalExpenses;
-
-  totalIncomeEl.textContent = `$${totalIncome}`;
-  totalExpensesEl.textContent = `$${totalExpenses}`;
-  totalBalanceEl.textContent = `$${balance}`;
-}
-
+//incom.
 const incomeAmountInput = DOM.incomeForm.querySelector(".income-amount");
+const incomeDateInput = DOM.incomeForm.querySelector('input[type="date"]');
+const incomeCategorySelect = DOM.incomeForm.querySelector("select");
+const incomeReferenceTextarea = DOM.incomeForm.querySelector("textarea");
 const addIncomeBtn = DOM.incomeForm.querySelector(".add-income-btn");
-
-const expenseAmountInput = DOM.expenseForm.querySelector(".expense-amount");
-const addExpenseBtn = DOM.expenseForm.querySelector(".add-expense-btn");
 
 addIncomeBtn.addEventListener("click", (e) => {
   e.preventDefault();
 
   const amount = Number(incomeAmountInput.value);
-  if (!amount || amount <= 0) return;
+  if (!amount) return;
 
   state.incomes.push({
     amount,
-    date: new Date().toLocaleDateString(),
+    date: incomeDateInput.value || new Date().toLocaleDateString(),
+    category: incomeCategorySelect.value,
+    reference: incomeReferenceTextarea.value,
     type: "income",
   });
 
   render();
-  incomeAmountInput.value = "";
+  DOM.incomeForm.reset();
 });
+//expens.
+const expenseAmountInput = DOM.expenseForm.querySelector(".expense-amount");
+const expenseDateInput = DOM.expenseForm.querySelector('input[type="date"]');
+const expenseCategorySelect = DOM.expenseForm.querySelector("select");
+const expenseReferenceTextarea = DOM.expenseForm.querySelector("textarea");
+const addExpenseBtn = DOM.expenseForm.querySelector(".add-expense-btn");
 
 addExpenseBtn.addEventListener("click", (e) => {
   e.preventDefault();
 
   const amount = Number(expenseAmountInput.value);
-  if (!amount || amount <= 0) return;
+  if (!amount) return;
 
   state.expenses.push({
     amount,
-    date: new Date().toLocaleDateString(),
+    date: expenseDateInput.value || new Date().toLocaleDateString(),
+    category: expenseCategorySelect.value,
+    reference: expenseReferenceTextarea.value,
     type: "expense",
   });
 
   render();
-  expenseAmountInput.value = "";
+  DOM.expenseForm.reset();
 });
 
 render();
