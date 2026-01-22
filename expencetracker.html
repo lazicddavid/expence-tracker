@@ -4,7 +4,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- STYLES -->
     <link rel="stylesheet" href="expencetracker.css" />
     <link
       rel="stylesheet"
@@ -15,11 +14,7 @@
   </head>
 
   <body>
-    <!-- =========================
-         SIDEBAR
-    ========================== -->
     <aside class="aside">
-      <!-- USER INFO -->
       <div class="user">
         <img src="avatar.png" alt="User avatar" />
         <div class="user-info">
@@ -28,7 +23,6 @@
         </div>
       </div>
 
-      <!-- NAVIGATION -->
       <nav class="category">
         <ul>
           <li class="active">
@@ -40,7 +34,6 @@
         </ul>
       </nav>
 
-      <!-- LOGOUT -->
       <ul>
         <li class="menu-item logout">
           <i class="fa-solid fa-arrow-right-from-bracket"></i>
@@ -49,11 +42,7 @@
       </ul>
     </aside>
 
-    <!-- =========================
-         MAIN CONTENT
-    ========================== -->
     <main class="main-container">
-      <!-- ===== DASHBOARD ===== -->
       <section id="dashboardCards">
         <div class="cards">
           <div class="total-income">
@@ -73,19 +62,14 @@
         </div>
       </section>
 
-      <!-- =========================
-           INCOMES PAGE
-      ========================== -->
       <section id="incomesSection" class="hidden incomes-page">
         <h1 class="page-title">Incomes</h1>
 
-        <!-- TOTAL BAR -->
         <div class="income-total-bar">
           <span>Total Income:</span>
           <span class="income-total-amount">$0</span>
         </div>
 
-        <!-- FORM -->
         <form class="income-form">
           <input type="text" placeholder="Salary Title" />
           <input type="number" placeholder="Salary Amount" />
@@ -106,19 +90,14 @@
         </form>
       </section>
 
-      <!-- =========================
-           EXPENSES PAGE
-      ========================== -->
       <section id="expensesSection" class="hidden expenses-page">
         <h1 class="page-title">Expenses</h1>
 
-        <!-- TOTAL BAR -->
         <div class="expense-total-bar">
           <span>Total Expense:</span>
           <span class="expense-total-amount">$0</span>
         </div>
 
-        <!-- FORM -->
         <form class="expense-form">
           <input type="text" placeholder="Expense Title" />
           <input type="number" placeholder="Expense Amount" />
@@ -141,11 +120,8 @@
       </section>
     </main>
 
-    <!-- =========================
-         HISTORY PANEL
-    ========================== -->
-    <aside class="history-panel">
-      <h2 class="panel-title" class="recenthistory">Recent History</h2>
+    <aside class="history-panel recent-history">
+      <h2 class="panel-title">Recent History</h2>
 
       <div class="stats-group">
         <div class="stats-header">
