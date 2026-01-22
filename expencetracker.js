@@ -1,6 +1,3 @@
-/* =======================
-   DOM MAPA
-======================= */
 const DOM = {
   menuItems: document.querySelectorAll(".category ul li"),
   dashboardCards: document.getElementById("dashboardCards"),
@@ -11,9 +8,6 @@ const DOM = {
   recentHistory: document.querySelector(".recent-history"),
 };
 
-/* =======================
-   HIDE / SHOW SECTIONS
-======================= */
 function hideForms() {
   DOM.dashboardCards.classList.add("hidden");
   DOM.incomesSection.classList.add("hidden");
@@ -21,13 +15,9 @@ function hideForms() {
   DOM.recentHistory.classList.add("hidden");
 }
 
-// inicijalno stanje
 hideForms();
 DOM.dashboardCards.classList.remove("hidden");
 
-/* =======================
-   ASIDE NAVIGATION
-======================= */
 DOM.menuItems.forEach((item) => {
   item.addEventListener("click", () => {
     DOM.menuItems.forEach((li) => li.classList.remove("active"));
@@ -51,24 +41,15 @@ DOM.menuItems.forEach((item) => {
   });
 });
 
-/* =======================
-   STATE
-======================= */
 const state = {
   incomes: [],
   expenses: [],
 };
 
-/* =======================
-   DASHBOARD ELEMENTI
-======================= */
 const totalIncomeEl = document.getElementById("totalIncome");
 const totalExpenseEl = document.getElementById("totalExpense");
 const totalBalanceEl = document.getElementById("totalBalance");
 
-/* =======================
-   RENDER DASHBOARD
-======================= */
 function renderDashboard() {
   let totalIncome = 0;
   let totalExpense = 0;
@@ -86,28 +67,26 @@ function renderDashboard() {
   totalBalanceEl.textContent = `$${totalIncome - totalExpense}`;
 }
 
-/* =======================
-   CENTRALNI RENDER
-======================= */
 function render() {
   renderDashboard();
-  // renderRecentHistory(); // dodaješ kasnije
 }
 
-/* =======================
-   FORME – INPUTI
-======================= */
-// income
+function updateDashboard() {
+  const totalIncome = state.incomes.reduce((sum, val) => sum + val, 0);
+  const totalExpenses = state.expenses.reduce((sum, val) => sum + val, 0);
+  const balance = totalIncome - totalExpenses;
+
+  totalIncomeEl.textContent = `$${totalIncome}`;
+  totalExpensesEl.textContent = `$${totalExpenses}`;
+  totalBalanceEl.textContent = `$${balance}`;
+}
+
 const incomeAmountInput = DOM.incomeForm.querySelector(".income-amount");
 const addIncomeBtn = DOM.incomeForm.querySelector(".add-income-btn");
 
-// expense
 const expenseAmountInput = DOM.expenseForm.querySelector(".expense-amount");
 const addExpenseBtn = DOM.expenseForm.querySelector(".add-expense-btn");
 
-/* =======================
-   LISTENERI
-======================= */
 addIncomeBtn.addEventListener("click", (e) => {
   e.preventDefault();
 
@@ -140,7 +119,4 @@ addExpenseBtn.addEventListener("click", (e) => {
   expenseAmountInput.value = "";
 });
 
-/* =======================
-   INIT RENDER
-======================= */
 render();
