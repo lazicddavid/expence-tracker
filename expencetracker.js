@@ -49,7 +49,7 @@ const state = {
 const totalIncomeEl = document.getElementById("totalIncome");
 const totalExpenseEl = document.getElementById("totalExpense");
 const totalBalanceEl = document.getElementById("totalBalance");
-
+//prebaciti u stejt i dodati funkcije get za oba
 function renderDashboard() {
   let totalIncome = 0;
   let totalExpense = 0;
@@ -82,6 +82,7 @@ function renderRecentHistory() {
     `;
 
     DOM.recentHistory.appendChild(div);
+    DOM.recentHistory.appendChild(div);
   });
 }
 
@@ -90,7 +91,7 @@ function render() {
   renderRecentHistory();
 }
 
-//incom.
+//incom.ispravke
 const incomeAmountInput = DOM.incomeForm.querySelector(".income-amount");
 const incomeDateInput = DOM.incomeForm.querySelector('input[type="date"]');
 const incomeCategorySelect = DOM.incomeForm.querySelector("select");
@@ -99,7 +100,7 @@ const addIncomeBtn = DOM.incomeForm.querySelector(".add-income-btn");
 
 addIncomeBtn.addEventListener("click", (e) => {
   e.preventDefault();
-
+  //napravi varijable, ne citaj direktno iz inputa, nego stavi eventlistenere na input
   const amount = Number(incomeAmountInput.value);
   if (!amount) return;
 
@@ -140,3 +141,4 @@ addExpenseBtn.addEventListener("click", (e) => {
 });
 
 render();
+//dodaj da se income, expanses, transactions, mogu sortirati po datumu, a na transaction stavi da mozes da filtriras samo income ili samo expensove.
