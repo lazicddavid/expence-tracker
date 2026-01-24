@@ -89,6 +89,7 @@ function renderRecentHistory() {
 function render() {
   renderDashboard();
   renderRecentHistory();
+  renderRecentHistory();
 }
 
 //incom.ispravke
