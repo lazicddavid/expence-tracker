@@ -89,7 +89,6 @@ function renderRecentHistory() {
 function render() {
   renderDashboard();
   renderRecentHistory();
-  renderRecentHistory();
 }
 
 //incom.ispravke
@@ -137,6 +136,7 @@ addExpenseBtn.addEventListener("click", (e) => {
     type: "expense",
   });
 
+  render();
   render();
   DOM.expenseForm.reset();
 });
