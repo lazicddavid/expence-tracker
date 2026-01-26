@@ -149,5 +149,33 @@ DOM.incomeCategorySelect.addEventListener("change", (e) => {
 DOM.incomeReferenceTextarea.addEventListener("input", (e) => {
   state.incomeDraft.reference = e.target.value;
 });
+
+DOM.expenseAmountInput.addEventListener("input", (e) => {
+  state.expenseDraft.amount = Number(e.target.value);
+});
+
+DOM.expenseDateInput.addEventListener("change", (e) => {
+  state.expenseDraft.date = e.target.value;
+});
+
+DOM.expenseCategorySelect.addEventListener("change", (e) => {
+  state.expenseDraft.category = e.target.value;
+});
+
+DOM.expenseReferenceTextarea.addEventListener("input", (e) => {
+  state.expenseDraft.reference = e.target.value;
+});
+
+DOM.addIncomeBtn.addEventListener("click", (e) => {
+  e.preventDefault();
+
+  if (!state.incomeDraft.amount) return;
+
+  state.incomeDraft.push({
+    amount: state.incomeDraft.amount,
+    date: state.incomeDraft.date || new Date().toLocaleDateString(),
+  });
+});
+
 render();
 //dodaj da se income, expanses, transactions, mogu sortirati po datumu, a na transaction stavi da mozes da filtriras samo income ili samo expensove.
