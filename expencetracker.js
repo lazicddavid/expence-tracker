@@ -44,6 +44,16 @@ DOM.menuItems.forEach((item) => {
 const state = {
   incomes: [],
   expenses: [],
+
+  getTotalIncome() {
+    return this.incomes.reduce((sum, intem) => sum + item.amount, 0);
+  },
+  getTotalExpance() {
+    return this.expanses.reduce((sum, item) => sum + item.amount, 0);
+  },
+  getBalance() {
+    return this.getTotalIncome() - this.getTotalExpance();
+  },
 };
 
 const totalIncomeEl = document.getElementById("totalIncome");
