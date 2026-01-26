@@ -6,6 +6,12 @@ const DOM = {
   incomeForm: document.querySelector(".income-form"),
   expenseForm: document.querySelector(".expense-form"),
   recentHistory: document.querySelector(".recent-history"),
+
+  incomeAmountInput: document.querySelector(".income-amount"),
+  incomeDateInput: document.querySelector(".income-form input[type='date]"),
+  incomeCategorySelect: document.querySelector(".income-form select"),
+  incomeReferenceTextarea: document.querySelector(".income-form textarea"),
+  addIncomeBtn: document.querySelector(".add-income-btn"),
 };
 
 function hideForms() {
@@ -44,6 +50,20 @@ DOM.menuItems.forEach((item) => {
 const state = {
   incomes: [],
   expenses: [],
+
+  incomeDraft: {
+    amount: 0,
+    date: "",
+    category: "",
+    reference: "",
+  },
+
+  expenseDraft: {
+    amount: 0,
+    date: "",
+    category: "",
+    reference: "",
+  },
 
   getTotalIncome() {
     return this.incomes.reduce((sum, intem) => sum + item.amount, 0);
@@ -102,6 +122,12 @@ const incomeDateInput = DOM.incomeForm.querySelector('input[type="date"]');
 const incomeCategorySelect = DOM.incomeForm.querySelector("select");
 const incomeReferenceTextarea = DOM.incomeForm.querySelector("textarea");
 const addIncomeBtn = DOM.incomeForm.querySelector(".add-income-btn");
+
+addIncomeBtn.addEventListener("click", (e) => {
+  e.preventDefault();
+
+  if (!state.incomeDraft.amount) return;
+});
 
 render();
 //dodaj da se income, expanses, transactions, mogu sortirati po datumu, a na transaction stavi da mozes da filtriras samo income ili samo expensove.
