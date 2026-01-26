@@ -60,16 +60,11 @@ const totalIncomeEl = document.getElementById("totalIncome");
 const totalExpenseEl = document.getElementById("totalExpense");
 const totalBalanceEl = document.getElementById("totalBalance");
 //prebaciti u stejt i dodati funkcije get za oba
+
 function renderDashboard() {
-  let totalIncome = 0;
-  let totalExpense = 0;
-
-  state.incomes.forEach((item) => (totalIncome += item.amount));
-  state.expenses.forEach((item) => (totalExpense += item.amount));
-
-  totalIncomeEl.textContent = `$${totalIncome}`;
-  totalExpenseEl.textContent = `$${totalExpense}`;
-  totalBalanceEl.textContent = `$${totalIncome - totalExpense}`;
+  totalIncomeEl.textContent = `$$(state.getTotalIncome)}`;
+  totalExpenseEl.textContent = `$$(state.getTotalExpance)}`;
+  totalBalanceEl.textContent = `$$(state.getBalance()})`;
 }
 
 function renderRecentHistory() {
