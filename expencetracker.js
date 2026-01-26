@@ -8,7 +8,7 @@ const DOM = {
   recentHistory: document.querySelector(".recent-history"),
 
   incomeAmountInput: document.querySelector(".income-amount"),
-  incomeDateInput: document.querySelector(".income-form input[type='date]"),
+  incomeDateInput: document.querySelector(".income-form input[type='date']"),
   incomeCategorySelect: document.querySelector(".income-form select"),
   incomeReferenceTextarea: document.querySelector(".income-form textarea"),
   addIncomeBtn: document.querySelector(".add-income-btn"),
@@ -72,13 +72,13 @@ const state = {
   },
 
   getTotalIncome() {
-    return this.incomes.reduce((sum, intem) => sum + item.amount, 0);
+    return this.incomes.reduce((sum, item) => sum + item.amount, 0);
   },
-  getTotalExpance() {
-    return this.expanses.reduce((sum, item) => sum + item.amount, 0);
+  getTotalExpence() {
+    return this.expenses.reduce((sum, item) => sum + item.amount, 0);
   },
   getBalance() {
-    return this.getTotalIncome() - this.getTotalExpance();
+    return this.getTotalIncome() - this.getTotalExpence();
   },
 };
 
@@ -189,6 +189,39 @@ DOM.addIncomeBtn.addEventListener("click", (e) => {
     reference = "",
   }
 });
+
+
+DOM.addExpenseBtn.addEventListener("click", (e) => {
+  e.preventDefault();
+
+
+if (!state.expenseDraft.amount) return;
+
+state.expenses.push({
+  amount: state.expenseDraft.amount,
+  date: state.expenseDraft.date || new Date().toLocaleDateString(),
+  category: state.expenseDraft.category,
+  reference: state.expenseDraft.reference,
+  type: "expnese" ,
+});
+render();
+
+DOM.expensesForm.reset();
+state.expenseDraft = {
+  amount: 0, //""
+  date: "",
+  category: "",
+  reference: "",
+};
+
+});
+
+
+
+
+
+
+
 
 render();
 //dodaj da se income, expanses, transactions, mogu sortirati po datumu, a na transaction stavi da mozes da filtriras samo income ili samo expensove.
