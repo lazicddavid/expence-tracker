@@ -139,5 +139,15 @@ DOM.incomeAmountInput.addEventListener("input", (e) => {
   state.incomeDraft.amount = Number(e.target.value);
 });
 
+DOM.incomeDateInput.addEventListener("change", (e) => {
+  state.incomeDateInput.date = e.target.value;
+});
+DOM.incomeCategorySelect.addEventListener("change", (e) => {
+  state.incomeDraft.category = e.target.value;
+});
+
+DOM.incomeReferenceTextarea.addEventListener("input", (e) => {
+  state.incomeDraft.reference = e.target.value;
+});
 render();
 //dodaj da se income, expanses, transactions, mogu sortirati po datumu, a na transaction stavi da mozes da filtriras samo income ili samo expensove.
