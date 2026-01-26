@@ -12,6 +12,12 @@ const DOM = {
   incomeCategorySelect: document.querySelector(".income-form select"),
   incomeReferenceTextarea: document.querySelector(".income-form textarea"),
   addIncomeBtn: document.querySelector(".add-income-btn"),
+
+  expenseAmountInput: document.querySelector(".expense-amount"),
+  expenseDateInput: document.querySelector(".expense-form input[type='date']"),
+  expenseCategorySelect: document.querySelector(".expense-form select"),
+  expenseReferenceTextarea: document.querySelector(".expense-form textarea"),
+  addExpenseBtn: document.querySelector(".add-expense-btn"),
 };
 
 function hideForms() {
@@ -127,6 +133,10 @@ addIncomeBtn.addEventListener("click", (e) => {
   e.preventDefault();
 
   if (!state.incomeDraft.amount) return;
+});
+
+DOM.incomeAmountInput.addEventListener("input", (e) => {
+  state.incomeDraft.amount = Number(e.target.value);
 });
 
 render();
