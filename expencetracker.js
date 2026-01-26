@@ -178,6 +178,16 @@ DOM.addIncomeBtn.addEventListener("click", (e) => {
     reference: state.incomeDraft.reference,
     type: "income",
   });
+
+  render();
+
+  DOM.incomeForm.reset();
+  state.incomeDraft = {
+    amount = 0, // ""
+    date: = "", 
+    category = "",
+    reference = "",
+  }
 });
 
 render();
