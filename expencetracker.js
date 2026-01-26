@@ -103,48 +103,5 @@ const incomeCategorySelect = DOM.incomeForm.querySelector("select");
 const incomeReferenceTextarea = DOM.incomeForm.querySelector("textarea");
 const addIncomeBtn = DOM.incomeForm.querySelector(".add-income-btn");
 
-addIncomeBtn.addEventListener("click", (e) => {
-  e.preventDefault();
-  //napravi varijable, ne citaj direktno iz inputa, nego stavi eventlistenere na input
-  const amount = Number(incomeAmountInput.value);
-  if (!amount) return;
-
-  state.incomes.push({
-    amount,
-    date: incomeDateInput.value || new Date().toLocaleDateString(),
-    category: incomeCategorySelect.value,
-    reference: incomeReferenceTextarea.value,
-    type: "income",
-  });
-
-  render();
-  DOM.incomeForm.reset();
-});
-//expens.
-const expenseAmountInput = DOM.expenseForm.querySelector(".expense-amount");
-const expenseDateInput = DOM.expenseForm.querySelector('input[type="date"]');
-const expenseCategorySelect = DOM.expenseForm.querySelector("select");
-const expenseReferenceTextarea = DOM.expenseForm.querySelector("textarea");
-const addExpenseBtn = DOM.expenseForm.querySelector(".add-expense-btn");
-
-addExpenseBtn.addEventListener("click", (e) => {
-  e.preventDefault();
-
-  const amount = Number(expenseAmountInput.value);
-  if (!amount) return;
-
-  state.expenses.push({
-    amount,
-    date: expenseDateInput.value || new Date().toLocaleDateString(),
-    category: expenseCategorySelect.value,
-    reference: expenseReferenceTextarea.value,
-    type: "expense",
-  });
-
-  render();
-  render();
-  DOM.expenseForm.reset();
-});
-
 render();
 //dodaj da se income, expanses, transactions, mogu sortirati po datumu, a na transaction stavi da mozes da filtriras samo income ili samo expensove.
