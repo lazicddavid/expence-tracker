@@ -174,6 +174,9 @@ DOM.addIncomeBtn.addEventListener("click", (e) => {
   state.incomeDraft.push({
     amount: state.incomeDraft.amount,
     date: state.incomeDraft.date || new Date().toLocaleDateString(),
+    category: state.incomeDraft.category,
+    reference: state.incomeDraft.reference,
+    type: "income",
   });
 });
 
