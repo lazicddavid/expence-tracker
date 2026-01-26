@@ -29,6 +29,7 @@ function hideForms() {
 
 hideForms();
 DOM.dashboardCards.classList.remove("hidden");
+DOM.recentHistory.classList.remove("hidden");
 
 DOM.menuItems.forEach((item) => {
   item.addEventListener("click", () => {
@@ -74,11 +75,11 @@ const state = {
   getTotalIncome() {
     return this.incomes.reduce((sum, item) => sum + item.amount, 0);
   },
-  getTotalExpence() {
+  getTotalExpense() {
     return this.expenses.reduce((sum, item) => sum + item.amount, 0);
   },
   getBalance() {
-    return this.getTotalIncome() - this.getTotalExpence();
+    return this.getTotalIncome() - this.getTotalExpense();
   },
 };
 
@@ -89,7 +90,7 @@ const totalBalanceEl = document.getElementById("totalBalance");
 
 function renderDashboard() {
   totalIncomeEl.textContent = `$$(state.getTotalIncome)}`;
-  totalExpenseEl.textContent = `$$(state.getTotalExpance)}`;
+  totalExpenseEl.textContent = `$$(state.getTotalExpence)}`;
   totalBalanceEl.textContent = `$$(state.getBalance()})`;
 }
 
@@ -113,7 +114,6 @@ function renderRecentHistory() {
     `;
 
     DOM.recentHistory.appendChild(div);
-    DOM.recentHistory.appendChild(div);
   });
 }
 
@@ -123,29 +123,16 @@ function render() {
 }
 
 //incom.ispravke
-const incomeAmountInput = DOM.incomeForm.querySelector(".income-amount");
-const incomeDateInput = DOM.incomeForm.querySelector('input[type="date"]');
-const incomeCategorySelect = DOM.incomeForm.querySelector("select");
-const incomeReferenceTextarea = DOM.incomeForm.querySelector("textarea");
-const addIncomeBtn = DOM.incomeForm.querySelector(".add-income-btn");
-
-addIncomeBtn.addEventListener("click", (e) => {
-  e.preventDefault();
-
-  if (!state.incomeDraft.amount) return;
-});
-
+/* INPUT LISTENERS (draft) */
 DOM.incomeAmountInput.addEventListener("input", (e) => {
   state.incomeDraft.amount = Number(e.target.value);
 });
-
 DOM.incomeDateInput.addEventListener("change", (e) => {
-  state.incomeDateInput.date = e.target.value;
+  state.incomeDraft.date = e.target.value;
 });
 DOM.incomeCategorySelect.addEventListener("change", (e) => {
   state.incomeDraft.category = e.target.value;
 });
-
 DOM.incomeReferenceTextarea.addEventListener("input", (e) => {
   state.incomeDraft.reference = e.target.value;
 });
@@ -153,25 +140,22 @@ DOM.incomeReferenceTextarea.addEventListener("input", (e) => {
 DOM.expenseAmountInput.addEventListener("input", (e) => {
   state.expenseDraft.amount = Number(e.target.value);
 });
-
 DOM.expenseDateInput.addEventListener("change", (e) => {
   state.expenseDraft.date = e.target.value;
 });
-
 DOM.expenseCategorySelect.addEventListener("change", (e) => {
   state.expenseDraft.category = e.target.value;
 });
-
 DOM.expenseReferenceTextarea.addEventListener("input", (e) => {
   state.expenseDraft.reference = e.target.value;
 });
 
+/* SUBMIT LISTENERS */
 DOM.addIncomeBtn.addEventListener("click", (e) => {
   e.preventDefault();
-
   if (!state.incomeDraft.amount) return;
 
-  state.incomeDraft.push({
+  state.incomes.push({
     amount: state.incomeDraft.amount,
     date: state.incomeDraft.date || new Date().toLocaleDateString(),
     category: state.incomeDraft.category,
@@ -180,48 +164,27 @@ DOM.addIncomeBtn.addEventListener("click", (e) => {
   });
 
   render();
-
   DOM.incomeForm.reset();
-  state.incomeDraft = {
-    amount = 0, // ""
-    date: = "", 
-    category = "",
-    reference = "",
-  }
+  state.incomeDraft = { amount: 0, date: "", category: "", reference: "" };
 });
-
 
 DOM.addExpenseBtn.addEventListener("click", (e) => {
   e.preventDefault();
+  if (!state.expenseDraft.amount) return;
 
+  state.expenses.push({
+    amount: state.expenseDraft.amount,
+    date: state.expenseDraft.date || new Date().toLocaleDateString(),
+    category: state.expenseDraft.category,
+    reference: state.expenseDraft.reference,
+    type: "expense",
+  });
 
-if (!state.expenseDraft.amount) return;
-
-state.expenses.push({
-  amount: state.expenseDraft.amount,
-  date: state.expenseDraft.date || new Date().toLocaleDateString(),
-  category: state.expenseDraft.category,
-  reference: state.expenseDraft.reference,
-  type: "expnese" ,
-});
-render();
-
-DOM.expensesForm.reset();
-state.expenseDraft = {
-  amount: 0, //""
-  date: "",
-  category: "",
-  reference: "",
-};
-
+  render();
+  DOM.expenseForm.reset();
+  state.expenseDraft = { amount: 0, date: "", category: "", reference: "" };
 });
 
-
-
-
-
-
-
-
 render();
+
 //dodaj da se income, expanses, transactions, mogu sortirati po datumu, a na transaction stavi da mozes da filtriras samo income ili samo expensove.
