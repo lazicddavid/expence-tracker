@@ -89,9 +89,9 @@ const totalBalanceEl = document.getElementById("totalBalance");
 //prebaciti u stejt i dodati funkcije get za oba
 
 function renderDashboard() {
-  totalIncomeEl.textContent = `$$(state.getTotalIncome)}`;
-  totalExpenseEl.textContent = `$$(state.getTotalExpence)}`;
-  totalBalanceEl.textContent = `$$(state.getBalance()})`;
+  totalIncomeEl.textContent = `$${state.getTotalIncome()}`;
+  totalExpenseEl.textContent = `$${state.getTotalExpense()}`;
+  totalBalanceEl.textContent = `$${state.getBalance()}`;
 }
 
 function renderRecentHistory() {
