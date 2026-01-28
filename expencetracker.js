@@ -119,6 +119,9 @@ function getAllTransactions() {
   return all;
 }
 
+const transactions = getAllTransactions();
+transactions.sort(compareByDate);
+
 function renderRecentHistory() {
   DOM.recentHistory.innerHTML = "<h2 class='panel-title'>Recent History</h2>";
 
