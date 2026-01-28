@@ -18,6 +18,11 @@ const DOM = {
   expenseCategorySelect: document.querySelector(".expense-form select"),
   expenseReferenceTextarea: document.querySelector(".expense-form textarea"),
   addExpenseBtn: document.querySelector(".add-expense-btn"),
+  transactionFilter: document.getElementById("transactionFilter"),
+  transactionControls: document.querySelector(".transaction-controls"),
+
+  incomePreview: document.querySelector(".income-preview"),
+  expensePreview: document.querySelector(".expense-preview"),
 };
 
 function hideForms() {
@@ -25,6 +30,7 @@ function hideForms() {
   DOM.incomesSection.classList.add("hidden");
   DOM.expensesSection.classList.add("hidden");
   DOM.recentHistory.classList.add("hidden");
+  DOM.transactionControls.classList.add("hidden");
 }
 
 hideForms();
@@ -42,6 +48,7 @@ DOM.menuItems.forEach((item) => {
     if (text.includes("dashboard")) {
       DOM.dashboardCards.classList.remove("hidden");
       DOM.recentHistory.classList.remove("hidden");
+      DOM.transactionControls.classList.remove("hidden");
     }
 
     if (text.includes("incomes")) {
@@ -119,7 +126,8 @@ function getAllTransactions() {
   return all;
 }
 
-
+function filterTransactions(type) {
+  const all = getAllTransactions();
   const filtered = [];
 
   all.forEach((item) => {
@@ -139,24 +147,41 @@ function getAllTransactions() {
   return filtered;
 }
 
-const list = filterTransactions("income");
-list.sort(compareByDate);
+function renderIncomePreview() {
+  DOM.incomePreview.innerHTML = "";
 
+  if (!state.incomeDraft.amount) return;
 
+  DOM.incomePreview.innerHTML = `
+    <p><strong>Amount:</strong> $${state.incomeDraft.amount}</p>
+    <p><strong>Date:</strong> ${state.incomeDraft.date || "-"}</p>
+    <p><strong>Category:</strong> ${state.incomeDraft.category || "-"}</p>
+    <p><strong>Note:</strong> ${state.incomeDraft.reference || "-"}</p>
+  `;
+}
 
+function renderExpensePreview() {
+  DOM.expensePreview.innerHTML = "";
 
+  if (!state.expenseDraft.amount) return;
+
+  DOM.expensePreview.innerHTML = `
+    <p><strong>Amount:</strong> $${state.expenseDraft.amount}</p>
+    <p><strong>Date:</strong> ${state.expenseDraft.date || "-"}</p>
+    <p><strong>Category:</strong> ${state.expenseDraft.category || "-"}</p>
+    <p><strong>Note:</strong> ${state.expenseDraft.reference || "-"}</p>
+  `;
+}
 
 function renderRecentHistory() {
   DOM.recentHistory.innerHTML = "<h2 class='panel-title'>Recent History</h2>";
 
-  const all = getAllTransactions();
-  all.sort(compareByDate);
+  const type = DOM.transactionFilter ? DOM.transactionFilter.value : "all";
 
-  let count = 0;
+  const list = filterTransactions(type);
+  list.sort(compareByDate);
 
-  all.forEach((item) => {
-    if (count === 5) return;
-
+  list.forEach((item) => {
     const div = document.createElement("div");
     div.className = "history-item";
 
@@ -165,17 +190,12 @@ function renderRecentHistory() {
       ${item.category || "—"} |
       $${item.amount}<br>
       <small>${item.date}</small>
-      <p>${item.reference || ""}</p>
+    
     `;
 
     DOM.recentHistory.appendChild(div);
-    count++;
   });
 }
-
-
-
-
 
 function render() {
   state.incomes.sort(compareByDate);
@@ -189,29 +209,43 @@ function render() {
 
 DOM.incomeAmountInput.addEventListener("input", (e) => {
   state.incomeDraft.amount = Number(e.target.value);
+  renderIncomePreview();
 });
 DOM.incomeDateInput.addEventListener("change", (e) => {
   state.incomeDraft.date = e.target.value;
+  renderIncomePreview();
 });
 DOM.incomeCategorySelect.addEventListener("change", (e) => {
   state.incomeDraft.category = e.target.value;
+  renderIncomePreview();
 });
 DOM.incomeReferenceTextarea.addEventListener("input", (e) => {
   state.incomeDraft.reference = e.target.value;
+  renderIncomePreview();
 });
 
 DOM.expenseAmountInput.addEventListener("input", (e) => {
   state.expenseDraft.amount = Number(e.target.value);
+  renderExpensePreview();
 });
 DOM.expenseDateInput.addEventListener("change", (e) => {
   state.expenseDraft.date = e.target.value;
+  renderExpensePreview();
 });
 DOM.expenseCategorySelect.addEventListener("change", (e) => {
   state.expenseDraft.category = e.target.value;
+  renderExpensePreview();
 });
 DOM.expenseReferenceTextarea.addEventListener("input", (e) => {
   state.expenseDraft.reference = e.target.value;
+  renderExpensePreview();
 });
+
+if (DOM.transactionFilter) {
+  DOM.transactionFilter.addEventListener("change", () => {
+    renderRecentHistory();
+  });
+}
 
 DOM.addIncomeBtn.addEventListener("click", (e) => {
   e.preventDefault();
@@ -246,7 +280,5 @@ DOM.addExpenseBtn.addEventListener("click", (e) => {
   DOM.expenseForm.reset();
   state.expenseDraft = { amount: 0, date: "", category: "", reference: "" };
 });
-
-render();
 
 //dodaj da se income, expanses, transactions, mogu sortirati po datumu, a na transaction stavi da mozes da filtriras samo income ili samo expensove.

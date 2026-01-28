@@ -71,12 +71,14 @@
         </div>
 
         <form class="income-form">
-          <input
-            type="number"
-            class="income-amount"
-            placeholder="Salary Amount"
-          />
-          <div class="income-preview"></div>
+          <div class="amount-row">
+            <input
+              type="number"
+              class="income-amount"
+              placeholder="Salary Amount"
+            />
+            <div class="income-preview"></div>
+          </div>
 
           <input type="date" class="income-date" />
 
@@ -104,12 +106,14 @@
         </div>
 
         <form class="expense-form">
-          <input
-            type="number"
-            class="expense-amount"
-            placeholder="Expense Amount"
-          />
-          <div class="expense-preview"></div>
+          <div class="amount-row">
+            <input
+              type="number"
+              class="expense-amount"
+              placeholder="Expense Amount"
+            />
+            <div class="expense-preview"></div>
+          </div>
 
           <input type="date" class="expense-date" />
 
@@ -128,17 +132,15 @@
           </button>
         </form>
       </section>
+
+      <div class="transaction-controls">
+        <select id="transactionFilter">
+          <option value="all">All</option>
+          <option value="income">Income</option>
+          <option value="expense">Expense</option>
+        </select>
+      </div>
     </main>
-
-    <div class="transaction-controls">
-      <select id="transactionFilter">
-        <option value="all">All</option>
-        <option value="income">Income</option>
-        <option value="expense">Expense</option>
-      </select>
-    </div>
-
-    <div class="recent-history"></div>
 
     <aside class="history-panel recent-history">
       <h2 class="panel-title">Recent History</h2>
