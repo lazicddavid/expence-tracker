@@ -398,3 +398,17 @@ span {
 .hidden {
   display: none !important;
 }
+
+.transaction-controls {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.transaction-controls select {
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  cursor: pointer;
+}

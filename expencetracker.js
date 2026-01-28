@@ -119,11 +119,7 @@ function getAllTransactions() {
   return all;
 }
 
-const transactions = getAllTransactions();
-transactions.sort(compareByDate);
 
-function filterTransactions(type) {
-  const all = getAllTransactions();
   const filtered = [];
 
   all.forEach((item) => {
@@ -146,14 +142,21 @@ function filterTransactions(type) {
 const list = filterTransactions("income");
 list.sort(compareByDate);
 
+
+
+
+
 function renderRecentHistory() {
   DOM.recentHistory.innerHTML = "<h2 class='panel-title'>Recent History</h2>";
 
-  const allItems = [...state.incomes, ...state.expenses]
-    .sort((a, b) => new Date(b.date) - new Date(a.date))
-    .slice(0, 5);
+  const all = getAllTransactions();
+  all.sort(compareByDate);
 
-  allItems.forEach((item) => {
+  let count = 0;
+
+  all.forEach((item) => {
+    if (count === 5) return;
+
     const div = document.createElement("div");
     div.className = "history-item";
 
@@ -166,8 +169,13 @@ function renderRecentHistory() {
     `;
 
     DOM.recentHistory.appendChild(div);
+    count++;
   });
 }
+
+
+
+
 
 function render() {
   state.incomes.sort(compareByDate);
