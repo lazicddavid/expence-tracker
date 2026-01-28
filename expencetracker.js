@@ -109,7 +109,7 @@ function getAllTransactions() {
   const all = [];
 
   state.incomes.forEach((item) => {
-    all.push.apply(item);
+    all.push(item);
   });
 
   state.expenses.forEach((item) => {
@@ -121,6 +121,30 @@ function getAllTransactions() {
 
 const transactions = getAllTransactions();
 transactions.sort(compareByDate);
+
+function filterTransactions(type) {
+  const all = getAllTransactions();
+  const filtered = [];
+
+  all.forEach((item) => {
+    if (type === "all") {
+      filtered.push(item);
+    }
+
+    if (type === "income" && item.type === "income") {
+      filtered.push(item);
+    }
+
+    if (type === "expense" && item.type === "expense") {
+      filtered.push(item);
+    }
+  });
+
+  return filtered;
+}
+
+const list = filterTransactions("income");
+list.sort(compareByDate);
 
 function renderRecentHistory() {
   DOM.recentHistory.innerHTML = "<h2 class='panel-title'>Recent History</h2>";
