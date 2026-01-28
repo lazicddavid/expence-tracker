@@ -105,6 +105,20 @@ function compareByDate(a, b) {
   return 0;
 }
 
+function getAllTransactions() {
+  const all = [];
+
+  state.incomes.forEach((item) => {
+    all.push.apply(item);
+  });
+
+  state.expenses.forEach((item) => {
+    all.push(item);
+  });
+
+  return all;
+}
+
 function renderRecentHistory() {
   DOM.recentHistory.innerHTML = "<h2 class='panel-title'>Recent History</h2>";
 
@@ -129,6 +143,9 @@ function renderRecentHistory() {
 }
 
 function render() {
+  state.incomes.sort(compareByDate);
+  state.expenses.sort(compareByDate);
+
   renderDashboard();
   renderRecentHistory();
 }
