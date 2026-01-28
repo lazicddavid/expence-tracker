@@ -94,6 +94,16 @@ function renderDashboard() {
   totalBalanceEl.textContent = `$${state.getBalance()}`;
 }
 
+function compareByDate(a, b) {
+  if (a.date < b.date) {
+    return 1;
+  }
+
+  if (a.date > b.date) {
+    return -1;
+  }
+}
+
 function renderRecentHistory() {
   DOM.recentHistory.innerHTML = "<h2 class='panel-title'>Recent History</h2>";
 
@@ -123,7 +133,7 @@ function render() {
 }
 
 //incom.ispravke
-/* INPUT LISTENERS (draft) */
+
 DOM.incomeAmountInput.addEventListener("input", (e) => {
   state.incomeDraft.amount = Number(e.target.value);
 });
@@ -150,7 +160,6 @@ DOM.expenseReferenceTextarea.addEventListener("input", (e) => {
   state.expenseDraft.reference = e.target.value;
 });
 
-/* SUBMIT LISTENERS */
 DOM.addIncomeBtn.addEventListener("click", (e) => {
   e.preventDefault();
   if (!state.incomeDraft.amount) return;
