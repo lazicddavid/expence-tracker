@@ -6,13 +6,11 @@ const DOM = {
   incomeForm: document.querySelector(".income-form"),
   expenseForm: document.querySelector(".expense-form"),
   recentHistory: document.querySelector(".recent-history"),
-
   incomeAmountInput: document.querySelector(".income-amount"),
   incomeDateInput: document.querySelector(".income-form input[type='date']"),
   incomeCategorySelect: document.querySelector(".income-form select"),
   incomeReferenceTextarea: document.querySelector(".income-form textarea"),
   addIncomeBtn: document.querySelector(".add-income-btn"),
-
   expenseAmountInput: document.querySelector(".expense-amount"),
   expenseDateInput: document.querySelector(".expense-form input[type='date']"),
   expenseCategorySelect: document.querySelector(".expense-form select"),
@@ -147,7 +145,10 @@ function filterTransactions(type) {
   return filtered;
 }
 
-function renderIncomePreview() {
+
+
+
+
   DOM.incomePreview.innerHTML = "";
 
   if (!state.incomeDraft.amount) return;
@@ -159,6 +160,7 @@ function renderIncomePreview() {
     <p><strong>Note:</strong> ${state.incomeDraft.reference || "-"}</p>
   `;
 }
+
 
 function renderExpensePreview() {
   DOM.expensePreview.innerHTML = "";
@@ -282,3 +284,24 @@ DOM.addExpenseBtn.addEventListener("click", (e) => {
 });
 
 //dodaj da se income, expanses, transactions, mogu sortirati po datumu, a na transaction stavi da mozes da filtriras samo income ili samo expensove.
+
+
+
+DOM.addExpenseBtnaddEventListener("click" => {
+  e.preventDefault();
+  if(!state.expenseDraft.amount) return;
+
+
+
+  state.expenses.push({
+    amount: state.expenseDraft.amount,
+    date: state.expenseDraft.date || new Date().toLocaleDateString(),
+    category: state.expenseDraft.category,
+    reference: state.expenseDraft.reference,
+    type: "expanse",
+  });
+
+  render();
+  DOM.expenseForm.reset(),
+  state.expenseDraft = {amount: 0, date: "", category: "", reference: ""};
+  });
