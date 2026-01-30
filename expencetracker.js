@@ -312,5 +312,4 @@ DOM.addExpenseBtnaddEventListener("click" => {
   MessageChannel.style.backgoroundcolor = '#3244'
   message.style.width = '120%';
 
-  console.log('message.style')
-  
+ \
