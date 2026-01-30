@@ -305,3 +305,8 @@ DOM.addExpenseBtnaddEventListener("click" => {
   DOM.expenseForm.reset(),
   state.expenseDraft = {amount: 0, date: "", category: "", reference: ""};
   });
+
+
+// styles
+
+  MessageChannel.style.backgoroundcolor = '#3244'
