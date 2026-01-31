@@ -162,16 +162,16 @@ function filterTransactions(type) {
 }
 
 
-function renderExpensePreview() {
-  DOM.expensePreview.innerHTML = "";
+function renderIncomePreview() {
+  DOM.incomePreview.innerHTML = "";
 
-  if (!state.expenseDraft.amount) return;
+  if (!state.incomeDraft.amount) return;
 
-  DOM.expensePreview.innerHTML = `
-    <p><strong>Amount:</strong> $${state.expenseDraft.amount}</p>
-    <p><strong>Date:</strong> ${state.expenseDraft.date || "-"}</p>
-    <p><strong>Category:</strong> ${state.expenseDraft.category || "-"}</p>
-    <p><strong>Note:</strong> ${state.expenseDraft.reference || "-"}</p>
+  DOM.incomePreview.innerHTML = `
+    <p><strong>Amount:</strong> $${state.incomeDraft.amount}</p>
+    <p><strong>Date:</strong> ${state.incomeDraft.date || "-"}</p>
+    <p><strong>Category:</strong> ${state.incomeDraft.category || "-"}</p>
+    <p><strong>Note:</strong> ${state.incomeDraft.reference || "-"}</p>
   `;
 }
 
@@ -287,26 +287,3 @@ DOM.addExpenseBtn.addEventListener("click", (e) => {
 
 
 
-DOM.addExpenseBtnaddEventListener("click" => {
-  e.preventDefault();
-  if(!state.expenseDraft.amount) return;
-
-
-
-  state.expenses.push({
-    amount: state.expenseDraft.amount,
-    date: state.expenseDraft.date || new Date().toLocaleDateString(),
-    category: state.expenseDraft.category,
-    reference: state.expenseDraft.reference,
-    type: "expanse",
-  });
-
-  render();
-  DOM.expenseForm.reset(),
-  state.expenseDraft = {amount: 0, date: "", category: "", reference: ""};
-  });
-
-
-
-
-  renderDashboard()
