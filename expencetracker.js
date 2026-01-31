@@ -145,23 +145,6 @@ function filterTransactions(type) {
   return filtered;
 }
 
-
-
-
-
-  DOM.incomePreview.innerHTML = "";
-
-  if (!state.incomeDraft.amount) return;
-
-  DOM.incomePreview.innerHTML = `
-    <p><strong>Amount:</strong> $${state.incomeDraft.amount}</p>
-    <p><strong>Date:</strong> ${state.incomeDraft.date || "-"}</p>
-    <p><strong>Category:</strong> ${state.incomeDraft.category || "-"}</p>
-    <p><strong>Note:</strong> ${state.incomeDraft.reference || "-"}</p>
-  `;
-}
-
-
 function renderIncomePreview() {
   DOM.incomePreview.innerHTML = "";
 
@@ -284,6 +267,3 @@ DOM.addExpenseBtn.addEventListener("click", (e) => {
 });
 
 //dodaj da se income, expanses, transactions, mogu sortirati po datumu, a na transaction stavi da mozes da filtriras samo income ili samo expensove.
-
-
-
