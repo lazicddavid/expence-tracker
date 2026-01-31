@@ -307,9 +307,6 @@ DOM.addExpenseBtnaddEventListener("click" => {
   });
 
 
-// styles
 
-  MessageChannel.style.backgoroundcolor = '#3244'
-  message.style.width = '120%';
 
- \
+  renderDashboard()
