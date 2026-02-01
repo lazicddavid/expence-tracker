@@ -408,11 +408,21 @@ span {
 }
 
 .transaction-controls select {
-  padding: 6px 10px;
-  border-radius: 6px;
-  border: 1px solid #ccc;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+
+  padding: 10px 38px 10px 14px;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+
+  background: white;
   font-size: 14px;
+  font-weight: 500;
+  color: rgb(0, 0, 93);
+
   cursor: pointer;
+  transition: all 0.2s ease;
 }
 
 .amount-row {
