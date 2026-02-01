@@ -124,27 +124,6 @@ function getAllTransactions() {
   return all;
 }
 
-function filterTransactions(type) {
-  const all = getAllTransactions();
-  const filtered = [];
-
-  all.forEach((item) => {
-    if (type === "all") {
-      filtered.push(item);
-    }
-
-    if (type === "income" && item.type === "income") {
-      filtered.push(item);
-    }
-
-    if (type === "expense" && item.type === "expense") {
-      filtered.push(item);
-    }
-  });
-
-  return filtered;
-}
-
 function renderIncomePreview() {
   DOM.incomePreview.innerHTML = "";
 
@@ -226,11 +205,7 @@ DOM.expenseReferenceTextarea.addEventListener("input", (e) => {
   renderExpensePreview();
 });
 
-if (DOM.transactionFilter) {
-  DOM.transactionFilter.addEventListener("change", () => {
-    renderRecentHistory();
-  });
-}
+y;
 
 DOM.addIncomeBtn.addEventListener("click", (e) => {
   e.preventDefault();
@@ -270,3 +245,6 @@ DOM.addExpenseBtn.addEventListener("click", (e) => {
 
 ///income i expense draft van stejta
 //const incom inputs, expense inputs
+//sortiranje po oldest i date
+
+//css dashboard srediti
