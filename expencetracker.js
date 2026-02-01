@@ -99,16 +99,7 @@ function renderDashboard() {
   totalBalanceEl.textContent = `$${state.getBalance()}`;
 }
 
-function compareByDate(a, b) {
-  if (a.date < b.date) {
-    return 1;
-  }
-
-  if (a.date > b.date) {
-    return -1;
-  }
-  return 0;
-}
+function compareByDate(a, b) {}
 
 function getAllTransactions() {
   const all = [];
