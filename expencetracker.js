@@ -6,21 +6,22 @@ const DOM = {
   incomeForm: document.querySelector(".income-form"),
   expenseForm: document.querySelector(".expense-form"),
   recentHistory: document.querySelector(".recent-history"),
+  transactionControls: document.querySelector(".transaction-controls"),
+
   incomeAmountInput: document.querySelector(".income-amount"),
-  incomeDateInput: document.querySelector(".income-form input[type='date']"),
+  incomeDateInput: document.querySelector(".income-date"),
   incomeCategorySelect: document.querySelector(".income-form select"),
   incomeReferenceTextarea: document.querySelector(".income-form textarea"),
   addIncomeBtn: document.querySelector(".add-income-btn"),
+  incomePreview: document.querySelector(".income-preview"),
+
   expenseAmountInput: document.querySelector(".expense-amount"),
-  expenseDateInput: document.querySelector(".expense-form input[type='date']"),
+  expenseDateInput: document.querySelector(".expense-date"),
   expenseCategorySelect: document.querySelector(".expense-form select"),
   expenseReferenceTextarea: document.querySelector(".expense-form textarea"),
   addExpenseBtn: document.querySelector(".add-expense-btn"),
-  transactionFilter: document.getElementById("transactionFilter"),
-  transactionControls: document.querySelector(".transaction-controls"),
-
-  incomePreview: document.querySelector(".income-preview"),
   expensePreview: document.querySelector(".expense-preview"),
+  sortSelect: document.getElementById("sortOrder"),
 };
 
 function hideForms() {
@@ -28,12 +29,13 @@ function hideForms() {
   DOM.incomesSection.classList.add("hidden");
   DOM.expensesSection.classList.add("hidden");
   DOM.recentHistory.classList.add("hidden");
-  DOM.transactionControls.classList.add("hidden");
+  if (DOM.transactionControls) DOM.transactionControls.classList.add("hidden");
 }
 
 hideForms();
 DOM.dashboardCards.classList.remove("hidden");
 DOM.recentHistory.classList.remove("hidden");
+if (DOM.transactionControls) DOM.transactionControls.classList.remove("hidden");
 
 DOM.menuItems.forEach((item) => {
   item.addEventListener("click", () => {
@@ -46,7 +48,8 @@ DOM.menuItems.forEach((item) => {
     if (text.includes("dashboard")) {
       DOM.dashboardCards.classList.remove("hidden");
       DOM.recentHistory.classList.remove("hidden");
-      DOM.transactionControls.classList.remove("hidden");
+      if (DOM.transactionControls)
+        DOM.transactionControls.classList.remove("hidden");
     }
 
     if (text.includes("incomes")) {
@@ -62,36 +65,25 @@ DOM.menuItems.forEach((item) => {
 const state = {
   incomes: [],
   expenses: [],
-
-  incomeDraft: {
-    amount: 0,
-    date: "",
-    category: "",
-    reference: "",
-  },
-
-  expenseDraft: {
-    amount: 0,
-    date: "",
-    category: "",
-    reference: "",
-  },
+  sortOrder: "newest",
 
   getTotalIncome() {
-    return this.incomes.reduce((sum, item) => sum + item.amount, 0);
+    return this.incomes.reduce((s, i) => s + i.amount, 0);
   },
   getTotalExpense() {
-    return this.expenses.reduce((sum, item) => sum + item.amount, 0);
+    return this.expenses.reduce((s, i) => s + i.amount, 0);
   },
   getBalance() {
     return this.getTotalIncome() - this.getTotalExpense();
   },
 };
 
+let incomeDraft = { amount: 0, date: "", category: "", reference: "" };
+let expenseDraft = { amount: 0, date: "", category: "", reference: "" };
+
 const totalIncomeEl = document.getElementById("totalIncome");
 const totalExpenseEl = document.getElementById("totalExpense");
 const totalBalanceEl = document.getElementById("totalBalance");
-//prebaciti u stejt i dodati funkcije get za oba
 
 function renderDashboard() {
   totalIncomeEl.textContent = `$${state.getTotalIncome()}`;
@@ -99,143 +91,141 @@ function renderDashboard() {
   totalBalanceEl.textContent = `$${state.getBalance()}`;
 }
 
-function compareByDate(a, b) {}
+function compareByDate(a, b) {
+  if (state.sortOrder === "oldest") {
+    if (a.date > b.date) return 1;
+    if (a.date < b.date) return -1;
+  } else {
+    if (a.date < b.date) return 1;
+    if (a.date > b.date) return -1;
+  }
+  return 0;
+}
 
 function getAllTransactions() {
-  const all = [];
-
-  state.incomes.forEach((item) => {
-    all.push(item);
-  });
-
-  state.expenses.forEach((item) => {
-    all.push(item);
-  });
-
-  return all;
+  return state.incomes.concat(state.expenses);
 }
 
 function renderIncomePreview() {
+  if (!DOM.incomePreview) return;
   DOM.incomePreview.innerHTML = "";
-
-  if (!state.incomeDraft.amount) return;
+  if (!incomeDraft.amount) return;
 
   DOM.incomePreview.innerHTML = `
-    <p><strong>Amount:</strong> $${state.incomeDraft.amount}</p>
-    <p><strong>Date:</strong> ${state.incomeDraft.date || "-"}</p>
-    <p><strong>Category:</strong> ${state.incomeDraft.category || "-"}</p>
-    <p><strong>Note:</strong> ${state.incomeDraft.reference || "-"}</p>
+    <p><strong>Amount:</strong> $${incomeDraft.amount}</p>
+    <p><strong>Date:</strong> ${incomeDraft.date || "-"}</p>
+    <p><strong>Category:</strong> ${incomeDraft.category || "-"}</p>
+    <p><strong>Note:</strong> ${incomeDraft.reference || "-"}</p>
+  `;
+}
+
+function renderExpensePreview() {
+  if (!DOM.expensePreview) return;
+  DOM.expensePreview.innerHTML = "";
+  if (!expenseDraft.amount) return;
+
+  DOM.expensePreview.innerHTML = `
+    <p><strong>Amount:</strong> $${expenseDraft.amount}</p>
+    <p><strong>Date:</strong> ${expenseDraft.date || "-"}</p>
+    <p><strong>Category:</strong> ${expenseDraft.category || "-"}</p>
+    <p><strong>Note:</strong> ${expenseDraft.reference || "-"}</p>
   `;
 }
 
 function renderRecentHistory() {
   DOM.recentHistory.innerHTML = "<h2 class='panel-title'>Recent History</h2>";
 
-  const type = DOM.transactionFilter ? DOM.transactionFilter.value : "all";
-
-  const list = filterTransactions(type);
-  list.sort(compareByDate);
+  const list = getAllTransactions().sort(compareByDate);
 
   list.forEach((item) => {
     const div = document.createElement("div");
     div.className = "history-item";
-
     div.innerHTML = `
       <strong>${item.type.toUpperCase()}</strong> |
       ${item.category || "—"} |
       $${item.amount}<br>
       <small>${item.date}</small>
-    
     `;
-
     DOM.recentHistory.appendChild(div);
   });
 }
 
 function render() {
-  state.incomes.sort(compareByDate);
-  state.expenses.sort(compareByDate);
-
   renderDashboard();
   renderRecentHistory();
 }
 
-//incom.ispravke
-
 DOM.incomeAmountInput.addEventListener("input", (e) => {
-  state.incomeDraft.amount = Number(e.target.value);
+  incomeDraft.amount = Number(e.target.value);
   renderIncomePreview();
 });
 DOM.incomeDateInput.addEventListener("change", (e) => {
-  state.incomeDraft.date = e.target.value;
+  incomeDraft.date = e.target.value;
   renderIncomePreview();
 });
 DOM.incomeCategorySelect.addEventListener("change", (e) => {
-  state.incomeDraft.category = e.target.value;
+  incomeDraft.category = e.target.value;
   renderIncomePreview();
 });
 DOM.incomeReferenceTextarea.addEventListener("input", (e) => {
-  state.incomeDraft.reference = e.target.value;
+  incomeDraft.reference = e.target.value;
   renderIncomePreview();
 });
 
 DOM.expenseAmountInput.addEventListener("input", (e) => {
-  state.expenseDraft.amount = Number(e.target.value);
+  expenseDraft.amount = Number(e.target.value);
   renderExpensePreview();
 });
 DOM.expenseDateInput.addEventListener("change", (e) => {
-  state.expenseDraft.date = e.target.value;
+  expenseDraft.date = e.target.value;
   renderExpensePreview();
 });
 DOM.expenseCategorySelect.addEventListener("change", (e) => {
-  state.expenseDraft.category = e.target.value;
+  expenseDraft.category = e.target.value;
   renderExpensePreview();
 });
 DOM.expenseReferenceTextarea.addEventListener("input", (e) => {
-  state.expenseDraft.reference = e.target.value;
+  expenseDraft.reference = e.target.value;
   renderExpensePreview();
 });
 
-y;
+if (DOM.sortSelect) {
+  DOM.sortSelect.addEventListener("change", (e) => {
+    state.sortOrder = e.target.value;
+    render();
+  });
+}
 
 DOM.addIncomeBtn.addEventListener("click", (e) => {
   e.preventDefault();
-  if (!state.incomeDraft.amount) return;
+  if (!incomeDraft.amount) return;
 
   state.incomes.push({
-    amount: state.incomeDraft.amount,
-    date: state.incomeDraft.date || new Date().toLocaleDateString(),
-    category: state.incomeDraft.category,
-    reference: state.incomeDraft.reference,
+    amount: incomeDraft.amount,
+    date: incomeDraft.date || new Date().toLocaleDateString(),
+    category: incomeDraft.category,
+    reference: incomeDraft.reference,
     type: "income",
   });
 
-  render();
   DOM.incomeForm.reset();
-  state.incomeDraft = { amount: 0, date: "", category: "", reference: "" };
+  incomeDraft = { amount: 0, date: "", category: "", reference: "" };
+  render();
 });
 
 DOM.addExpenseBtn.addEventListener("click", (e) => {
   e.preventDefault();
-  if (!state.expenseDraft.amount) return;
+  if (!expenseDraft.amount) return;
 
   state.expenses.push({
-    amount: state.expenseDraft.amount,
-    date: state.expenseDraft.date || new Date().toLocaleDateString(),
-    category: state.expenseDraft.category,
-    reference: state.expenseDraft.reference,
+    amount: expenseDraft.amount,
+    date: expenseDraft.date || new Date().toLocaleDateString(),
+    category: expenseDraft.category,
+    reference: expenseDraft.reference,
     type: "expense",
   });
 
-  render();
   DOM.expenseForm.reset();
-  state.expenseDraft = { amount: 0, date: "", category: "", reference: "" };
+  expenseDraft = { amount: 0, date: "", category: "", reference: "" };
+  render();
 });
-
-//dodaj da se income, expanses, transactions, mogu sortirati po datumu, a na transaction stavi da mozes da filtriras samo income ili samo expensove.
-
-///income i expense draft van stejta
-//const incom inputs, expense inputs
-//sortiranje po oldest i date
-
-//css dashboard srediti

@@ -195,13 +195,6 @@ span {
   width: 100%;
 }
 
-.history-panel {
-  border-radius: 24px;
-  padding: 30px;
-  max-height: 850px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.586);
-}
-
 .history-panel section {
   border-radius: 20px;
   padding: 18px 24px;
@@ -211,7 +204,7 @@ span {
   background: #fdeff3;
   border-radius: 24px;
   padding: 32px;
-  position: static;
+  position: relative;
   width: 100%;
 }
 
@@ -400,11 +393,14 @@ span {
 }
 
 .transaction-controls {
+  position: absolute;
   display: flex;
   justify-content: flex-end;
   align-items: center;
   margin-bottom: 16px;
   padding: 0 20px;
+  bottom: 60px;
+  transform: translate(-50px);
 }
 
 .transaction-controls select {
