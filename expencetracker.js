@@ -267,3 +267,6 @@ DOM.addExpenseBtn.addEventListener("click", (e) => {
 });
 
 //dodaj da se income, expanses, transactions, mogu sortirati po datumu, a na transaction stavi da mozes da filtriras samo income ili samo expensove.
+
+///income i expense draft van stejta
+//const incom inputs, expense inputs
